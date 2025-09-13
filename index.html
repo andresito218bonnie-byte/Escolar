@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portal Escolar • Institución Educativa</title>
+  <meta name="description" content="Portal escolar completo con aula virtual, gestión de tareas y diseño glassmorphism." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Logo Institución" />
+        <div>
+          <h1>Institución Educativa — Docente de Turbaco</h1>
+          <div class="muted subtitle">Portal Escolar • Plataforma Académica</div>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#home">Inicio</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#tareas">Aula Virtual</a>
+        <a href="#docentes">Docentes</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn" id="open-login">Iniciar sesión</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left glass" id="home">
+        <h2>Bienvenidos al Portal Escolar</h2>
+        <p class="lead">Plataforma institucional y aula virtual: tareas, calificaciones, asistencia y comunicación entre docentes, estudiantes y familias.</p>
+
+        <div class="stats">
+          <div class="stat">📚 12 Cursos</div>
+          <div class="stat">👩‍🏫 28 Docentes</div>
+          <div class="stat">👨‍🎓 420 Estudiantes</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3>Misión</h3>
+        <p class="muted">Formar ciudadanos críticos y responsables mediante educación de calidad, integrando valores, ciencia y cultura.</p>
+      </div>
+
+      <aside class="hero-right">
+        <div class="glass card">
+          <h3>Próximo evento</h3>
+          <div class="muted">27 de septiembre • Feria de ciencias</div>
+          <p class="muted small">Exposición de proyectos estudiantiles y premiación. Lugar: Auditorio Principal.</p>
+        </div>
+
+        <div class="glass card">
+          <h3>Noticias destacadas</h3>
+          <ul class="muted small">
+            <li>Entrega de boletines — 30/09</li>
+            <li>Inicio de inscripciones — 01/10</li>
+            <li>Torneo Intercolegial — 15/10</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <!-- GRID PRINCIPAL -->
+    <main class="grid">
+      <!-- LEFT: contenido-->
+      <div class="content">
+
+        <!-- Oferta académica -->
+        <section class="glass section" id="oferta" aria-labelledby="oferta-title">
+          <div class="full">
+            <h3 id="oferta-title">Oferta académica</h3>
+            <p class="muted">Preescolar • Primaria • Secundaria • Bachillerato • Actividades extracurriculares</p>
+          </div>
+
+          <div class="item glass">
+            <h4>Planes de estudio</h4>
+            <p class="muted">Descripción y enlaces a temarios y competencias.</p>
+          </div>
+
+          <div class="item glass">
+            <h4>Extracurriculares</h4>
+            <p class="muted">Deportes, música, arte, tecnología y clubes.</p>
+          </div>
+
+          <div class="item glass">
+            <h4>Admisiones</h4>
+            <p class="muted">Requisitos, documentos y formulario de preinscripción (placeholder).</p>
+          </div>
+
+          <div class="item glass">
+            <h4>Recursos</h4>
+            <p class="muted">Biblioteca digital, guías y enlaces a plataformas externas.</p>
+          </div>
+        </section>
+
+        <!-- Aula Virtual / Tareas -->
+        <section class="glass task-module" id="tareas" aria-labelledby="tareas-title">
+          <h3 id="tareas-title">Aula Virtual — Gestión de Tareas</h3>
+          <p class="muted">Docentes crean tareas y estudiantes suben entregas. (Componente frontend; conectar con backend para producción.)</p>
+
+          <div class="actions-quick">
+            <button class="tag" id="createTaskBtn">Crear tarea (demo)</button>
+            <button class="tag" id="refreshTasksBtn">Refrescar lista</button>
+          </div>
+
+          <div class="task-list" id="taskList" aria-live="polite"></div>
+
+          <div class="muted note">NOTA: Los botones de descargar / calificar son demo. En backend: proteger rutas, verificar roles y almacenar archivos en S3 o similar.</div>
+        </section>
+
+        <!-- Foros -->
+        <section class="glass">
+          <h3>Foros y Comunicación</h3>
+          <p class="muted">Foros por materia y chats en tiempo real. (Integrar con WebSockets en backend.)</p>
+        </section>
+
+        <!-- Control escolar -->
+        <section class="glass">
+          <h3>Control Escolar</h3>
+          <div class="tags">
+            <span class="tag">Asistencia</span>
+            <span class="tag">Boletines</span>
+            <span class="tag">Estadísticas</span>
+          </div>
+          <p class="muted">Generación de reportes, exportes PDF y análisis de rendimiento.</p>
+        </section>
+
+        <!-- Biblioteca -->
+        <section class="glass">
+          <h3>Biblioteca Digital</h3>
+          <p class="muted">Buscador de recursos y documentos. Recomendado: indexar con buscador dedicado (ElasticSearch).</p>
+        </section>
+
+        <!-- Admin -->
+        <section class="glass">
+          <h3>Panel Administrativo</h3>
+          <p class="muted">Gestión de usuarios, cursos y permisos. (Endpoints REST + autenticación segura).</p>
+        </section>
+      </div>
+
+      <!-- RIGHT: sidebar -->
+      <aside class="sidebar">
+        <div class="glass panel">
+          <h3>Acceso rápido</h3>
+          <div class="muted">Inicia sesión para acceder a tu aula.</div>
+          <div style="display:flex; gap:8px; margin-top:10px">
+            <button class="btn" id="open-login-2">Entrar</button>
+            <a href="#contacto" class="tag link">Contacto</a>
+          </div>
+        </div>
+
+        <div class="glass panel" id="docentes">
+          <h3>Docentes destacados</h3>
+          <div class="teacher-list">
+            <div class="teacher">
+              <img src="https://via.placeholder.com/64" alt="">
+              <div class="name">M. Rodríguez</div>
+              <div class="muted small">Matemáticas</div>
+            </div>
+            <div class="teacher">
+              <img src="https://via.placeholder.com/64" alt="">
+              <div class="name">L. Gómez</div>
+              <div class="muted small">Lengua</div>
+            </div>
+            <div class="teacher">
+              <img src="https://via.placeholder.com/64" alt="">
+              <div class="name">R. Méndez</div>
+              <div class="muted small">Ciencias</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass panel">
+          <h3>Calendario escolar</h3>
+          <p class="muted small">Ver calendario anual — feriados y eventos. (Conectar con Google Calendar o iCal.)</p>
+        </div>
+
+        <div class="glass panel" id="contacto">
+          <h3>Contacto</h3>
+          <p class="muted small">Dirección: Calle Falsa 123 • Tel: (000) 000-0000</p>
+          <p class="muted small">WhatsApp: +57 300 000 0000</p>
+          <p><a class="tag" href="mailto:colegio@ejemplo.edu">Enviar correo</a></p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="glass footer">
+      © <span id="year"></span> Institución Educativa • Todos los derechos reservados • Diseñado con glassmorphism • Integraciones sugeridas: Zoom, Google Drive, S3.
+    </footer>
+  </div>
+
+  <!-- LOGIN MODAL (FRONTEND SIMULADO) -->
+  <div id="loginModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3>Iniciar sesión</h3>
+        <button class="close" id="closeLogin">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <label class="muted">Correo institucional</label>
+        <input id="email" type="email" placeholder="usuario@institucion.edu" />
+        <label class="muted">Contraseña</label>
+        <input id="pass" type="password" placeholder="********" />
+        <div class="modal-actions">
+          <button class="tag" id="cancelLogin">Cancelar</button>
+          <button class="btn" id="doLogin">Entrar</button>
+        </div>
+        <div class="muted small note">NOTA: Modal demo. Para producción conecta con backend (OAuth/JWT) y HTTPS.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
