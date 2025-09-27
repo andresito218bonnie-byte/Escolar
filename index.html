@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Digital - Colegio San Martín de Porres</title>
+    <meta name="description" content="Plataforma educativa digital más avanzada para educación virtual e híbrida">
+    <meta name="keywords" content="educación, virtual, inteligencia artificial, aulas virtuales">
+    
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="#" data-manifest>
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Campus Digital">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <img src="https://ui-avatars.com/api/?name=CSM&background=3b82f6&color=fff&size=100" alt="Logo" class="splash-img">
+            </div>
+            <h1 class="splash-title">Campus Digital</h1>
+            <p class="splash-subtitle">Cargando tu experiencia educativa...</p>
+            <div class="splash-loader">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen hidden">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="https://ui-avatars.com/api/?name=CSM&background=3b82f6&color=fff&size=80" alt="Logo" class="login-logo">
+                <h1>Campus Digital</h1>
+                <p>Colegio San Martín de Porres</p>
+            </div>
+            
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label class="form-label">Email o Código Estudiantil</label>
+                    <input type="text" class="form-control" id="login-email" required placeholder="maria.gonzalez@colegiosanmartin.edu.co">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Contraseña</label>
+                    <div class="password-input-container">
+                        <input type="password" class="form-control" id="login-password" required placeholder="••••••••">
+                        <button type="button" class="password-toggle" id="toggle-password">👁️</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="remember-me">
+                        <span class="checkmark"></span>
+                        Recordar sesión
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn--primary btn--full-width login-btn">Iniciar Sesión</button>
+                
+                <div class="login-options">
+                    <a href="#" class="login-link">¿Olvidaste tu contraseña?</a>
+                    <a href="#" class="login-link" id="register-link">Crear cuenta nueva</a>
+                </div>
+                
+                <div class="login-divider">
+                    <span>O continúa con</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="btn btn--outline social-btn">
+                        <span>🔐</span> Google SSO
+                    </button>
+                    <button type="button" class="btn btn--outline social-btn">
+                        <span>🏢</span> Microsoft 365
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2FA Screen -->
+    <div id="twofa-screen" class="login-screen hidden">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Verificación en Dos Pasos</h2>
+                <p>Ingresa el código de 6 dígitos enviado a tu dispositivo</p>
+            </div>
+            
+            <form id="twofa-form" class="login-form">
+                <div class="twofa-inputs">
+                    <input type="text" class="twofa-digit" maxlength="1" pattern="[0-9]" required>
+                    <input type="text" class="twofa-digit" maxlength="1" pattern="[0-9]" required>
+                    <input type="text" class="twofa-digit" maxlength="1" pattern="[0-9]" required>
+                    <input type="text" class="twofa-digit" maxlength="1" pattern="[0-9]" required>
+                    <input type="text" class="twofa-digit" maxlength="1" pattern="[0-9]" required>
+                    <input type="text" class="twofa-digit" maxlength="1" pattern="[0-9]" required>
+                </div>
+                
+                <button type="submit" class="btn btn--primary btn--full-width">Verificar</button>
+                
+                <div class="twofa-options">
+                    <button type="button" class="btn btn--outline btn--sm" id="resend-code">Reenviar código</button>
+                    <button type="button" class="btn btn--outline btn--sm" id="use-backup">Usar código de respaldo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Onboarding Screen -->
+    <div id="onboarding-screen" class="onboarding-screen hidden">
+        <div class="onboarding-container">
+            <div class="onboarding-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="onboarding-progress"></div>
+                </div>
+                <span class="progress-text">Paso <span id="current-step">1</span> de 4</span>
+            </div>
+            
+            <div class="onboarding-content" id="onboarding-content">
+                <!-- Steps will be dynamically inserted -->
+            </div>
+            
+            <div class="onboarding-navigation">
+                <button class="btn btn--outline" id="prev-step" style="visibility: hidden;">Anterior</button>
+                <button class="btn btn--primary" id="next-step">Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="main-app" class="main-app hidden">
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="https://ui-avatars.com/api/?name=CSM&background=3b82f6&color=fff&size=40" alt="Logo" class="sidebar-logo">
+                <div class="sidebar-title">
+                    <h3>Campus Digital</h3>
+                    <span class="sidebar-subtitle">v3.2.1</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebar-toggle">◀</button>
+            </div>
+            
+            <div class="sidebar-user">
+                <img src="https://ui-avatars.com/api/?name=Maria+Gonzalez&background=3b82f6&color=fff&size=48" alt="Avatar" class="user-avatar">
+                <div class="user-info">
+                    <h4>María González</h4>
+                    <span class="user-role">Estudiante - 11° A</span>
+                    <div class="user-level">
+                        <span class="level-badge level-gold">Oro</span>
+                        <span class="level-points">4,250 pts</span>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="sidebar-menu" id="sidebar-menu">
+                <li class="menu-item active" data-view="dashboard">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">Dashboard</span>
+                    <span class="menu-badge">3</span>
+                </li>
+                <li class="menu-item" data-view="virtual-classroom">
+                    <span class="menu-icon">📹</span>
+                    <span class="menu-text">Aulas Virtuales</span>
+                    <span class="menu-badge live">En vivo</span>
+                </li>
+                <li class="menu-item" data-view="assignments">
+                    <span class="menu-icon">📝</span>
+                    <span class="menu-text">Tareas</span>
+                    <span class="menu-badge">5</span>
+                </li>
+                <li class="menu-item" data-view="exams">
+                    <span class="menu-icon">📋</span>
+                    <span class="menu-text">Exámenes</span>
+                </li>
+                <li class="menu-item" data-view="grades">
+                    <span class="menu-icon">📈</span>
+                    <span class="menu-text">Calificaciones</span>
+                </li>
+                <li class="menu-item" data-view="calendar">
+                    <span class="menu-icon">📅</span>
+                    <span class="menu-text">Calendario</span>
+                </li>
+                <li class="menu-item" data-view="library">
+                    <span class="menu-icon">📚</span>
+                    <span class="menu-text">Biblioteca</span>
+                </li>
+                <li class="menu-item" data-view="messages">
+                    <span class="menu-icon">💬</span>
+                    <span class="menu-text">Mensajes</span>
+                    <span class="menu-badge">2</span>
+                </li>
+                <li class="menu-item" data-view="forums">
+                    <span class="menu-icon">🗣️</span>
+                    <span class="menu-text">Foros</span>
+                </li>
+                <li class="menu-item" data-view="achievements">
+                    <span class="menu-icon">🏆</span>
+                    <span class="menu-text">Logros</span>
+                </li>
+                <li class="menu-separator"></li>
+                <li class="menu-item" data-view="analytics">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">Analytics IA</span>
+                </li>
+                <li class="menu-item" data-view="settings">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">Configuración</span>
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <div class="server-status">
+                    <div class="status-indicator status-online"></div>
+                    <span>Conectado - 99.97% uptime</span>
+                </div>
+                <button class="btn btn--outline btn--sm" id="logout-btn">Cerrar Sesión</button>
+            </div>
+        </nav>
+
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="btn btn--outline btn--sm mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+                <div class="breadcrumb" id="breadcrumb">
+                    <span>Dashboard</span>
+                </div>
+            </div>
+            
+            <div class="header-center">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar materias, tareas, profesores..." id="global-search">
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="quick-actions">
+                    <button class="quick-action-btn" id="ai-assistant-btn" title="Asistente IA">🤖</button>
+                    <button class="quick-action-btn" id="notifications-btn" title="Notificaciones">
+                        🔔
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="quick-action-btn" id="theme-toggle" title="Cambiar tema">🌞</button>
+                </div>
+                
+                <div class="user-menu" id="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Maria+Gonzalez&background=3b82f6&color=fff&size=32" alt="Avatar" class="user-menu-avatar">
+                    <div class="user-menu-dropdown hidden" id="user-menu-dropdown">
+                        <a href="#" class="dropdown-item">Mi Perfil</a>
+                        <a href="#" class="dropdown-item">Configuración</a>
+                        <a href="#" class="dropdown-item">Ayuda</a>
+                        <hr class="dropdown-separator">
+                        <a href="#" class="dropdown-item" id="logout-dropdown">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content" id="main-content">
+            <!-- Dashboard View -->
+            <div id="dashboard-view" class="view active">
+                <div class="dashboard-header">
+                    <div class="welcome-section">
+                        <h1>¡Bienvenida de vuelta, María! 👋</h1>
+                        <p>Es sábado, 27 de septiembre de 2025 - Tienes 3 tareas pendientes y 1 examen próximo</p>
+                    </div>
+                    
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-content">
+                                <h3>8.7</h3>
+                                <p>Promedio General</p>
+                                <span class="stat-change positive">+0.3 este mes</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-content">
+                                <h3>15</h3>
+                                <p>Ranking Clase</p>
+                                <span class="stat-change positive">↑2 posiciones</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-content">
+                                <h3>23</h3>
+                                <p>Logros Desbloqueados</p>
+                                <span class="stat-change">2 nuevos</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-content">
+                                <h3>67%</h3>
+                                <p>Progreso Nivel</p>
+                                <span class="stat-change">Oro → Platino</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Urgent Tasks Widget -->
+                    <div class="dashboard-widget urgent-tasks">
+                        <div class="widget-header">
+                            <h3>⚠️ Tareas Urgentes</h3>
+                            <button class="widget-action" id="view-all-tasks">Ver todas</button>
+                        </div>
+                        <div class="widget-content">
+                            <div class="urgent-task">
+                                <div class="task-priority high"></div>
+                                <div class="task-info">
+                                    <h4>Análisis de Funciones Cuadráticas</h4>
+                                    <p>Matemáticas • Vence hoy a las 23:59</p>
+                                    <div class="task-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 60%"></div>
+                                        </div>
+                                        <span>60% completado</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--sm">Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Events -->
+                    <div class="dashboard-widget upcoming-events">
+                        <div class="widget-header">
+                            <h3>📅 Próximos Eventos</h3>
+                            <button class="widget-action" id="view-calendar">Ver calendario</button>
+                        </div>
+                        <div class="widget-content">
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="date-day">28</span>
+                                    <span class="date-month">Sep</span>
+                                </div>
+                                <div class="event-info">
+                                    <h4>Examen Parcial Matemáticas</h4>
+                                    <p>08:00 - 09:30 • Aula 201</p>
+                                    <span class="event-type exam">Examen</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="date-day">01</span>
+                                    <span class="date-month">Oct</span>
+                                </div>
+                                <div class="event-info">
+                                    <h4>Feria de Ciencias</h4>
+                                    <p>09:00 - 16:00 • Gimnasio</p>
+                                    <span class="event-type special">Evento Especial</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Analytics -->
+                    <div class="dashboard-widget performance-chart">
+                        <div class="widget-header">
+                            <h3>📊 Rendimiento Académico</h3>
+                            <select class="form-control widget-select">
+                                <option>Últimos 6 meses</option>
+                                <option>Este año</option>
+                                <option>Por materia</option>
+                            </select>
+                        </div>
+                        <div class="widget-content">
+                            <canvas id="performance-chart" style="position: relative; height: 250px;"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- AI Recommendations -->
+                    <div class="dashboard-widget ai-recommendations">
+                        <div class="widget-header">
+                            <h3>🤖 Recomendaciones IA</h3>
+                            <span class="ai-badge">Powered by AI</span>
+                        </div>
+                        <div class="widget-content">
+                            <div class="recommendation-item">
+                                <div class="rec-icon">💡</div>
+                                <div class="rec-content">
+                                    <h4>Refuerza Historia de Colombia</h4>
+                                    <p>Tu rendimiento ha bajado 5% este mes. Te recomiendo revisar las causas de la independencia.</p>
+                                    <button class="btn btn--outline btn--sm">Ver recursos</button>
+                                </div>
+                            </div>
+                            <div class="recommendation-item">
+                                <div class="rec-icon">🎯</div>
+                                <div class="rec-content">
+                                    <h4>Mantén el nivel en Matemáticas</h4>
+                                    <p>Excelente progreso en derivadas. Continúa con esta metodología de estudio.</p>
+                                    <button class="btn btn--outline btn--sm">Ver estrategia</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Messages -->
+                    <div class="dashboard-widget recent-messages">
+                        <div class="widget-header">
+                            <h3>💬 Mensajes Recientes</h3>
+                            <button class="widget-action" id="view-all-messages">Ver todos</button>
+                        </div>
+                        <div class="widget-content">
+                            <div class="message-item unread">
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Lopez&background=ef4444&color=fff&size=40" alt="Avatar" class="message-avatar">
+                                <div class="message-info">
+                                    <h4>Carlos López</h4>
+                                    <p>Recuerda que el examen de derivadas es mañana. Repasa los ejercicios...</p>
+                                    <span class="message-time">Hace 2 horas</span>
+                                </div>
+                                <div class="message-status">
+                                    <span class="unread-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Study Streak -->
+                    <div class="dashboard-widget study-streak">
+                        <div class="widget-header">
+                            <h3>🔥 Racha de Estudio</h3>
+                        </div>
+                        <div class="widget-content text-center">
+                            <div class="streak-number">7</div>
+                            <p>Días consecutivos</p>
+                            <div class="streak-calendar">
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                            </div>
+                            <p class="streak-message">¡Increíble! Mantén el ritmo para desbloquear el logro "Estudiante Constante"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virtual Classroom View -->
+            <div id="virtual-classroom-view" class="view hidden">
+                <div class="classroom-header">
+                    <h1>📹 Aulas Virtuales</h1>
+                    <div class="classroom-actions">
+                        <button class="btn btn--primary" id="join-random-class">Unirse a Clase</button>
+                        <button class="btn btn--outline" id="schedule-class">Programar Clase</button>
+                    </div>
+                </div>
+
+                <div class="classroom-tabs">
+                    <button class="tab-btn active" data-tab="active-classes">Clases Activas</button>
+                    <button class="tab-btn" data-tab="upcoming-classes">Próximas</button>
+                    <button class="tab-btn" data-tab="recorded-classes">Grabaciones</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="active-classes" class="tab-pane active">
+                        <div class="class-grid">
+                            <div class="class-card live">
+                                <div class="class-thumbnail">
+                                    <div class="live-indicator">🔴 EN VIVO</div>
+                                    <div class="class-preview">
+                                        <div class="participant-count">23 participantes</div>
+                                    </div>
+                                </div>
+                                <div class="class-info">
+                                    <h3>Matemáticas - Repaso Derivadas</h3>
+                                    <p>Prof. Carlos López</p>
+                                    <div class="class-meta">
+                                        <span>⏱️ Iniciado hace 15 min</span>
+                                        <span>📍 Aula Virtual 201</span>
+                                    </div>
+                                    <button class="btn btn--primary btn--full-width join-class-btn" data-room="math-derivatives">Unirse Ahora</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Classroom Interface -->
+            <div id="classroom-interface" class="classroom-interface hidden">
+                <div class="classroom-header-bar">
+                    <div class="class-title">Matemáticas - Repaso Derivadas</div>
+                    <div class="class-time" id="class-timer">15:32</div>
+                    <button class="btn btn--outline btn--sm" id="leave-class">Salir</button>
+                </div>
+
+                <div class="classroom-layout">
+                    <div class="video-area">
+                        <div class="main-video">
+                            <div class="video-placeholder">
+                                <div class="teacher-video">
+                                    <img src="https://ui-avatars.com/api/?name=Carlos+Lopez&background=ef4444&color=fff&size=200" alt="Profesor" class="teacher-avatar">
+                                    <div class="video-controls">
+                                        <span class="teacher-name">Prof. Carlos López</span>
+                                        <div class="audio-indicator active"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="participants-grid">
+                            <div class="participant-video">
+                                <img src="https://ui-avatars.com/api/?name=Maria+G&background=3b82f6&color=fff&size=80" alt="Tú" class="participant-avatar">
+                                <span class="participant-name">Tú</span>
+                                <div class="participant-controls">
+                                    <span class="mute-indicator"></span>
+                                </div>
+                            </div>
+                            <div class="participant-video">
+                                <img src="https://ui-avatars.com/api/?name=Ana+M&background=10b981&color=fff&size=80" alt="Ana" class="participant-avatar">
+                                <span class="participant-name">Ana M.</span>
+                            </div>
+                            <div class="participant-video">
+                                <img src="https://ui-avatars.com/api/?name=Carlos+S&background=f59e0b&color=fff&size=80" alt="Carlos" class="participant-avatar">
+                                <span class="participant-name">Carlos S.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="whiteboard-area">
+                        <div class="whiteboard-toolbar">
+                            <button class="tool-btn active" data-tool="pen">✏️</button>
+                            <button class="tool-btn" data-tool="eraser">🧽</button>
+                            <button class="tool-btn" data-tool="text">📝</button>
+                            <button class="tool-btn" data-tool="shapes">🔷</button>
+                            <div class="color-picker">
+                                <input type="color" value="#000000" id="pen-color">
+                            </div>
+                            <button class="tool-btn" id="clear-board">🗑️</button>
+                        </div>
+                        <canvas id="whiteboard" width="800" height="600"></canvas>
+                    </div>
+
+                    <div class="chat-panel">
+                        <div class="chat-header">
+                            <h4>Chat de Clase</h4>
+                            <span class="participants-count">23 participantes</span>
+                        </div>
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="chat-message">
+                                <strong>Prof. López:</strong> Bienvenidos al repaso de derivadas
+                            </div>
+                            <div class="chat-message">
+                                <strong>Ana M:</strong> ¿Podría repetir la regla de la cadena?
+                            </div>
+                        </div>
+                        <div class="chat-input-container">
+                            <input type="text" class="chat-input" placeholder="Escribe un mensaje..." id="chat-input">
+                            <button class="chat-send" id="send-message">📤</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="classroom-controls">
+                    <button class="control-btn" id="mute-btn">🎤</button>
+                    <button class="control-btn" id="video-btn">📹</button>
+                    <button class="control-btn" id="screen-share-btn">🖥️</button>
+                    <button class="control-btn" id="raise-hand-btn">✋</button>
+                    <button class="control-btn" id="record-btn">🔴</button>
+                    <button class="control-btn" id="more-options">⚙️</button>
+                </div>
+            </div>
+
+            <!-- Other Views (simplified structure for brevity) -->
+            <div id="assignments-view" class="view hidden">
+                <h1>📝 Gestión de Tareas</h1>
+                <!-- Assignments content will be populated by JavaScript -->
+            </div>
+
+            <div id="exams-view" class="view hidden">
+                <h1>📋 Sistema de Exámenes</h1>
+                <!-- Exams content will be populated by JavaScript -->
+            </div>
+
+            <div id="grades-view" class="view hidden">
+                <h1>📈 Calificaciones y Reportes</h1>
+                <!-- Grades content will be populated by JavaScript -->
+            </div>
+
+            <div id="calendar-view" class="view hidden">
+                <h1>📅 Calendario Académico Inteligente</h1>
+                <!-- Calendar content will be populated by JavaScript -->
+            </div>
+
+            <div id="library-view" class="view hidden">
+                <h1>📚 Biblioteca Digital</h1>
+                <!-- Library content will be populated by JavaScript -->
+            </div>
+
+            <div id="messages-view" class="view hidden">
+                <h1>💬 Centro de Comunicaciones</h1>
+                <!-- Messages content will be populated by JavaScript -->
+            </div>
+
+            <div id="forums-view" class="view hidden">
+                <h1>🗣️ Foros de Discusión</h1>
+                <!-- Forums content will be populated by JavaScript -->
+            </div>
+
+            <div id="achievements-view" class="view hidden">
+                <h1>🏆 Sistema de Logros</h1>
+                <!-- Achievements content will be populated by JavaScript -->
+            </div>
+
+            <div id="analytics-view" class="view hidden">
+                <h1>📊 Analytics e Inteligencia Artificial</h1>
+                <!-- Analytics content will be populated by JavaScript -->
+            </div>
+
+            <div id="settings-view" class="view hidden">
+                <h1>⚙️ Configuración Avanzada</h1>
+                <!-- Settings content will be populated by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Assistant Chat -->
+    <div id="ai-chat" class="ai-chat hidden">
+        <div class="ai-chat-header">
+            <div class="ai-avatar">🤖</div>
+            <div class="ai-info">
+                <h4>Asistente Educativo IA</h4>
+                <span class="ai-status">En línea</span>
+            </div>
+            <button class="ai-close" id="close-ai-chat">✖️</button>
+        </div>
+        
+        <div class="ai-chat-messages" id="ai-chat-messages">
+            <div class="ai-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    ¡Hola María! 👋 Soy tu asistente educativo inteligente. Puedo ayudarte con:
+                    <ul>
+                        <li>📚 Explicar conceptos difíciles</li>
+                        <li>📝 Revisar tus tareas</li>
+                        <li>📊 Analizar tu rendimiento</li>
+                        <li>📅 Planificar tu estudio</li>
+                    </ul>
+                    ¿En qué puedo ayudarte hoy?
+                </div>
+            </div>
+        </div>
+        
+        <div class="ai-chat-input">
+            <input type="text" class="ai-input" placeholder="Pregúntame cualquier cosa..." id="ai-input">
+            <button class="ai-send" id="ai-send">📤</button>
+        </div>
+        
+        <div class="ai-suggestions">
+            <button class="suggestion-btn">Explicar derivadas</button>
+            <button class="suggestion-btn">Revisar mi progreso</button>
+            <button class="suggestion-btn">Crear plan de estudio</button>
+        </div>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div id="notifications-panel" class="notifications-panel hidden">
+        <div class="notifications-header">
+            <h4>🔔 Notificaciones</h4>
+            <button class="mark-all-read">Marcar todas como leídas</button>
+        </div>
+        <div class="notifications-content">
+            <!-- Notifications will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p id="loading-text">Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
