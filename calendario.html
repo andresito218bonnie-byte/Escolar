@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sitio web oficial de la Institución Educativa Ciudad de Tunja. Formando líderes para el futuro con excelencia académica y valores.">
+    <title>Institución Educativa | Ciudad de Tunja</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="stylesheet" href="css/calendario.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="top-bar">
+            <div class="container top-bar__inner">
+                <div class="top-bar__contact">
+                    <a href="mailto:info@institucion.edu.co"><i class="fa-solid fa-envelope"></i> info@institucion.edu.co</a>
+                    <a href="tel:+576012345678"><i class="fa-solid fa-phone"></i> (601) 234 5678</a>
+                </div>
+                <div class="top-bar__actions">
+                    <a href="/portal-estudiantes" class="btn btn--small btn--outline">Portal Estudiantes</a>
+                    <a href="/portal-docentes" class="btn btn--small btn--outline">Portal Docentes</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <div class="container navbar__inner">
+                <a href="index.html" class="navbar__brand">
+                    <img src="assets/logo.png" alt="Logo Institución" width="60" height="60">
+                    <div class="navbar__brand-text">
+                        <span class="brand-title">IE Ciudad De Tunja</span>
+                        <span class="brand-subtitle">Colegio de Educación Tradicional</span>
+                    </div>
+                </a>
+
+                <button class="navbar__toggle" aria-label="Abrir menú" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <ul class="navbar__menu">
+                    <li class="navbar__item"><a href="#inicio" class="navbar__link active">Inicio</a></li>
+                    
+                    <li class="navbar__item has-dropdown">
+                        <a href="#nosotros" class="navbar__link">Institucional <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="nuestra-historia.html">Nuestra Historia</a></li>
+                            <li><a href="mision-vision.html">Misión y Visión</a></li>
+                            <li><a href="/directorio">Directorio Institucional</a></li>
+                            <li><a href="/manual-convivencia">Manual de Convivencia</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="navbar__item"><a href="index.html#academico" class="navbar__link">Académico</a></li>
+                    <li class="navbar__item"><a href="index.html#admisiones" class="navbar__link">Admisiones</a></li>
+                    <li class="navbar__item"><a href="index.html#noticias" class="navbar__link">Noticias</a></li>
+                    <li class="navbar__item navbar__item--cta">
+                        <a href="/matriculas" class="btn btn--primary">Matricúlate 2024</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="calendar-page">
+        <section class="page-header">
+            <div class="container">
+                <span class="section-subtitle">Programación Escolar</span>
+                <h1 class="page-title">Calendario Académico</h1>
+                <p class="page-description">Mantente al tanto de todas las fechas importantes, entregas de boletines, días festivos y eventos institucionales.</p>
+            </div>
+        </section>
+
+        <section class="calendar-section section-padding">
+            <div class="container">
+                <div class="calendar-wrapper">
+                    
+                    <div class="calendar-grid-container">
+                        <div class="calendar-header">
+                            <button class="calendar-btn" aria-label="Mes anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                            <h2 class="calendar-month">Octubre 2024</h2>
+                            <button class="calendar-btn" aria-label="Mes siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                        
+                        <div class="calendar-weekdays">
+                            <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+                        </div>
+                        
+                        <div class="calendar-days">
+                            <div class="day prev-month">30</div>
+                            <div class="day prev-month">31</div>
+                            
+                            <div class="day">1</div>
+                            <div class="day">2</div>
+                            <div class="day">3</div>
+                            <div class="day">4</div>
+                            <div class="day">5</div>
+                            <div class="day">6</div>
+                            <div class="day">7</div>
+                            <div class="day">8</div>
+                            <div class="day">9</div>
+                            
+                            <div class="day has-event event-yellow">10<span class="dot"></span></div>
+                            
+                            <div class="day">11</div>
+                            <div class="day">12</div>
+                            <div class="day">13</div>
+                            <div class="day">14</div>
+                            
+                            <div class="day has-event event-blue active">15<span class="dot"></span></div>
+                            
+                            <div class="day">16</div>
+                            <div class="day">17</div>
+                            <div class="day">18</div>
+                            <div class="day">19</div>
+                            <div class="day">20</div>
+                            <div class="day">21</div>
+                            <div class="day">22</div>
+                            <div class="day">23</div>
+                            <div class="day">24</div>
+                            
+                            <div class="day has-event event-blue">25<span class="dot"></span></div>
+                            
+                            <div class="day">26</div>
+                            <div class="day">27</div>
+                            <div class="day">28</div>
+                            <div class="day">29</div>
+                            <div class="day">30</div>
+                            
+                            <div class="day has-event event-yellow">31<span class="dot"></span></div>
+                        </div>
+                        
+                        <div class="calendar-legend">
+                            <span class="legend-item"><span class="dot dot--blue"></span> Académico</span>
+                            <span class="legend-item"><span class="dot dot--yellow"></span> Cultural / Deportivo</span>
+                        </div>
+                    </div>
+
+                    <div class="calendar-events-list">
+                        <h3 class="events-list-title">Eventos de Octubre</h3>
+                        
+                        <div class="events-container">
+                            <div class="event-card">
+                                <div class="event-card__date yellow">
+                                    <span class="day">10</span>
+                                    <span class="month">OCT</span>
+                                </div>
+                                <div class="event-card__info">
+                                    <h4>Campeones Intercolegiados</h4>
+                                    <p><i class="fa-regular fa-clock"></i> 08:00 AM - Coliseo</p>
+                                </div>
+                            </div>
+
+                            <div class="event-card active-event">
+                                <div class="event-card__date blue">
+                                    <span class="day">15</span>
+                                    <span class="month">OCT</span>
+                                </div>
+                                <div class="event-card__info">
+                                    <h4>Feria de Ciencia y Tecnología</h4>
+                                    <p><i class="fa-regular fa-clock"></i> 07:00 AM - Aulas Múltiples</p>
+                                </div>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-card__date blue">
+                                    <span class="day">25</span>
+                                    <span class="month">OCT</span>
+                                </div>
+                                <div class="event-card__info">
+                                    <h4>Entrega de Boletines 3er Periodo</h4>
+                                    <p><i class="fa-regular fa-clock"></i> 07:00 AM - Auditorio</p>
+                                </div>
+                            </div>
+
+                            <div class="event-card">
+                                <div class="event-card__date yellow">
+                                    <span class="day">31</span>
+                                    <span class="month">OCT</span>
+                                </div>
+                                <div class="event-card__info">
+                                    <h4>Celebración Día de los Niños</h4>
+                                    <p><i class="fa-regular fa-clock"></i> 10:00 AM - Zonas Verdes</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="btn btn--outline mt-4 w-100 text-center" style="color: var(--color-blue); border-color: var(--color-blue);">Descargar Cronograma PDF</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col footer-about">
+                <img src="assets/logo.png" alt="Logo Colegio Blanco" class="footer-logo">
+                <p class="footer-desc">Comprometidos con la excelencia académica y la formación en valores para construir un futuro brillante.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col footer-links">
+                <h4 class="footer-title">Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nuestra-historia.html">Nuestra Institución</a></li>
+                    <li><a href="#">Proceso de Admisión</a></li>
+                    <li><a href="#">Plataforma Académica</a></li>
+                    <li><a href="#">PQRS</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-links">
+                <h4 class="footer-title">Legal y Transparencia</h4>
+                <ul>
+                    <li><a href="#">Manual de Convivencia</a></li>
+                    <li><a href="#">Sistema Institucional...</a></li>
+                    <li><a href="#">Políticas de Privacidad</a></li>
+                    <li><a href="#">Tratamiento de Datos...</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-contact">
+                <h4 class="footer-title">Contáctanos</h4>
+                <ul class="contact-info">
+                    <li><i class="fa-solid fa-map-location-dot"></i> <span>Calle 123 # 45 - 67<br>Tunja, Boyacá, Colombia</span></li>
+                    <li><i class="fa-solid fa-phone"></i> <span>PBX: (601) 234 5678<br>Cel: (+57) 300 123 4567</span></li>
+                    <li><i class="fa-solid fa-envelope"></i> <span>admisiones@colegiocuidadtunj.edu.co</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom__inner">
+                <p>&copy; <span id="current-year"></span> Colegio Ciudad de Tunja. Todos los derechos reservados.</p>
+                <p class="footer-credits">Diseñado con propósitos educativos.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/calendario.js"></script>
+</body>
+</html>

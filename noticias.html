@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sitio web oficial de la Institución Educativa Ciudad de Tunja. Formando líderes para el futuro con excelencia académica y valores.">
+    <title>Institución Educativa | Ciudad de Tunja</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="stylesheet" href="css/noticias.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="top-bar">
+            <div class="container top-bar__inner">
+                <div class="top-bar__contact">
+                    <a href="mailto:info@institucion.edu.co"><i class="fa-solid fa-envelope"></i> info@institucion.edu.co</a>
+                    <a href="tel:+576012345678"><i class="fa-solid fa-phone"></i> (601) 234 5678</a>
+                </div>
+                <div class="top-bar__actions">
+                    <a href="/portal-estudiantes" class="btn btn--small btn--outline">Portal Estudiantes</a>
+                    <a href="/portal-docentes" class="btn btn--small btn--outline">Portal Docentes</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <div class="container navbar__inner">
+                <a href="index.html" class="navbar__brand">
+                    <img src="assets/logo.png" alt="Logo Institución" width="60" height="60">
+                    <div class="navbar__brand-text">
+                        <span class="brand-title">IE Ciudad De Tunja</span>
+                        <span class="brand-subtitle">Colegio de Educación Tradicional</span>
+                    </div>
+                </a>
+
+                <button class="navbar__toggle" aria-label="Abrir menú" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <ul class="navbar__menu">
+                    <li class="navbar__item"><a href="#inicio" class="navbar__link active">Inicio</a></li>
+                    
+                    <li class="navbar__item has-dropdown">
+                        <a href="#nosotros" class="navbar__link">Institucional <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="nuestra-historia.html">Nuestra Historia</a></li>
+                            <li><a href="mision-vision.html">Misión y Visión</a></li>
+                            <li><a href="/directorio">Directorio Institucional</a></li>
+                            <li><a href="/manual-convivencia">Manual de Convivencia</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="navbar__item"><a href="index.html#academico" class="navbar__link">Académico</a></li>
+                    <li class="navbar__item"><a href="index.html#admisiones" class="navbar__link">Admisiones</a></li>
+                    <li class="navbar__item"><a href="index.html#noticias" class="navbar__link">Noticias</a></li>
+                    <li class="navbar__item navbar__item--cta">
+                        <a href="/matriculas" class="btn btn--primary">Matricúlate 2024</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="news-portal-page">
+        
+        <div class="news-ticker-bar">
+            <div class="container ticker-container">
+                <span class="ticker-label"><i class="fa-solid fa-bolt"></i> Última hora:</span>
+                <marquee class="ticker-text" behavior="scroll" direction="left" scrollamount="5">
+                    Abiertas las inscripciones para las Olimpiadas Matemáticas 2024. | El equipo de baloncesto clasifica a la final departamental. | Próxima semana: Entrega de boletines.
+                </marquee>
+            </div>
+        </div>
+
+        <div class="container news-magazine-layout">
+            
+            <div class="main-news-column">
+                
+                <a href="noticia-detalle.html?id=feria-ciencias" class="hero-post">
+                    <div class="hero-post__image">
+                        <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 3rem;"></i></div>
+                        <div class="hero-post__overlay"></div>
+                    </div>
+                    <div class="hero-post__content">
+                        <span class="category-tag category-tag--science">Ciencia y Tecnología</span>
+                        <h1 class="hero-post__title">Gran éxito en la Feria de Innovación y Robótica 2024</h1>
+                        <ul class="post-meta">
+                            <li><i class="fa-regular fa-calendar"></i> 24 Oct, 2024</li>
+                            <li><i class="fa-regular fa-user"></i> Por: Coordinación Académica</li>
+                        </ul>
+                        <p class="hero-post__excerpt">Nuestros estudiantes de grado 11º sorprendieron al jurado con proyectos enfocados en energías renovables y domótica para el hogar.</p>
+                    </div>
+                </a>
+
+                <div class="section-header-small">
+                    <h2>Noticias Recientes</h2>
+                    <div class="header-line"></div>
+                </div>
+
+                <div class="recent-news-grid">
+                    <a href="noticia-detalle.html?id=campeones-baloncesto" class="news-grid-item">
+                        <div class="news-grid-item__img">
+                            <span class="category-tag category-tag--sports">Deportes</span>
+                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
+                        </div>
+                        <div class="news-grid-item__content">
+                            <h3 class="news-grid-item__title">Campeones en el torneo intercolegiado de baloncesto</h3>
+                            <ul class="post-meta">
+                                <li><i class="fa-regular fa-calendar"></i> 20 Oct, 2024</li>
+                            </ul>
+                            <p>Una final de infarto que nos coronó como los mejores de la región.</p>
+                        </div>
+                    </a>
+
+                    <a href="noticia-detalle.html?id=grupo-teatro" class="news-grid-item">
+                        <div class="news-grid-item__img">
+                            <span class="category-tag category-tag--culture">Cultura</span>
+                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
+                        </div>
+                        <div class="news-grid-item__content">
+                            <h3 class="news-grid-item__title">El grupo de teatro se prepara para su gran obra de fin de año</h3>
+                            <ul class="post-meta">
+                                <li><i class="fa-regular fa-calendar"></i> 18 Oct, 2024</li>
+                            </ul>
+                            <p>Los ensayos de 'Romeo y Julieta' prometen una noche inolvidable.</p>
+                        </div>
+                    </a>
+
+                    <a href="noticia-detalle.html?id=resultados-saber11" class="news-grid-item">
+                        <div class="news-grid-item__img">
+                            <span class="category-tag category-tag--academic">Académico</span>
+                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
+                        </div>
+                        <div class="news-grid-item__content">
+                            <h3 class="news-grid-item__title">Excelentes resultados en las pruebas de Estado Saber 11</h3>
+                            <ul class="post-meta">
+                                <li><i class="fa-regular fa-calendar"></i> 15 Oct, 2024</li>
+                            </ul>
+                            <p>Mantenemos nuestro nivel A+ gracias al esfuerzo de nuestros seniors.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="noticia-detalle.html?id=asamblea-padres" class="news-grid-item">
+                        <div class="news-grid-item__img">
+                            <span class="category-tag category-tag--community">Comunidad</span>
+                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
+                        </div>
+                        <div class="news-grid-item__content">
+                            <h3 class="news-grid-item__title">Primera asamblea de padres: Uniendo lazos por la educación</h3>
+                            <ul class="post-meta">
+                                <li><i class="fa-regular fa-calendar"></i> 10 Oct, 2024</li>
+                            </ul>
+                            <p>Agradecemos la asistencia masiva para definir las metas de este año.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="pagination">
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <span class="page-dots">...</span>
+                    <a href="#" class="page-link">Siguiente <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+            </div>
+
+            <aside class="sidebar">
+                
+                <div class="widget">
+                    <h3 class="widget-title">Lo más leído</h3>
+                    <div class="trending-list">
+                        <a href="noticia-detalle.html?id=cronograma-matriculas" class="trending-item">
+                            <span class="trending-number">1</span>
+                            <div class="trending-info">
+                                <h4>Cronograma oficial para el proceso de matrículas 2025</h4>
+                                <span class="post-meta">Hace 2 días</span>
+                            </div>
+                        </a>
+                        <a href="noticia-detalle.html?id=menu-cafeteria" class="trending-item">
+                            <span class="trending-number">2</span>
+                            <div class="trending-info">
+                                <h4>Menú de la cafetería escolar: Cambios saludables</h4>
+                                <span class="post-meta">Hace 5 días</span>
+                            </div>
+                        </a>
+                        <a href="noticia-detalle.html?id=lista-utiles" class="trending-item">
+                            <span class="trending-number">3</span>
+                            <div class="trending-info">
+                                <h4>Lista de útiles escolares por grado</h4>
+                                <span class="post-meta">Hace 1 semana</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">Categorías</h3>
+                    <ul class="category-list">
+                        <li><a href="#">Académico <span>(24)</span></a></li>
+                        <li><a href="#">Deportes <span>(15)</span></a></li>
+                        <li><a href="#">Cultura y Arte <span>(9)</span></a></li>
+                        <li><a href="#">Ciencia y Tecnología <span>(12)</span></a></li>
+                        <li><a href="#">Comunidad <span>(30)</span></a></li>
+                    </ul>
+                </div>
+
+                <div class="widget newsletter-widget">
+                    <i class="fa-regular fa-envelope-open"></i>
+                    <h3>Suscríbete al Boletín</h3>
+                    <p>Recibe las noticias más importantes del colegio directo en tu correo.</p>
+                    <form action="#" class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit" class="btn btn--primary">Suscribirme</button>
+                    </form>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+        <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                
+                <div class="footer-col footer-about">
+                    <img src="assets/logo.png" alt="Logo Institución Blanco" class="footer-logo">
+                    <p class="footer-desc">
+                        Comprometidos con la excelencia académica y la formación en valores para construir un futuro brillante.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col footer-links">
+                    <h4 class="footer-title">Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nuestra Institución</a></li>
+                        <li><a href="#admisiones">Proceso de Admisión</a></li>
+                        <li><a href="/plataforma">Plataforma Académica</a></li>
+                        <li><a href="/pqrs">PQRS</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-links">
+                    <h4 class="footer-title">Legal y Transparencia</h4>
+                    <ul>
+                        <li><a href="/documentos/manual-convivencia.pdf" target="_blank">Manual de Convivencia</a></li>
+                        <li><a href="/documentos/sIEE.pdf" target="_blank">Sistema Institucional de Evaluación</a></li>
+                        <li><a href="/politicas-privacidad">Políticas de Privacidad</a></li>
+                        <li><a href="/tratamiento-datos">Tratamiento de Datos Personales</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-contact">
+                    <h4 class="footer-title">Contáctanos</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <span>Calle 123 # 45 - 67<br>Ciudad, Departamento, País</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <span>PBX: (601) 234 5678<br>Cel: (+57) 300 123 4567</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>admisiones@institucion.edu.co</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom__inner">
+                <p>&copy; <span id="current-year">2024</span> Institución Educativa Ciudad de Tunja. Todos los derechos reservados.</p>
+                <p class="footer-credits">Diseñado con propósitos educativos.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
