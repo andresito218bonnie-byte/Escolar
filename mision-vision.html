@@ -17,7 +17,8 @@
 </head>
 <body>
 
-    <header class="site-header">
+<header class="site-header">
+        
         <div class="top-bar">
             <div class="container top-bar__inner">
                 <div class="top-bar__contact">
@@ -33,6 +34,7 @@
 
         <nav class="navbar">
             <div class="container navbar__inner">
+                
                 <a href="index.html" class="navbar__brand">
                     <img src="assets/logo.png" alt="Logo Institución" width="60" height="60">
                     <div class="navbar__brand-text">
@@ -41,17 +43,15 @@
                     </div>
                 </a>
 
-                <button class="navbar__toggle" aria-label="Abrir menú" aria-expanded="false">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
+                <button id="btn-hamburguesa" class="menu-toggle" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
                 </button>
 
                 <ul class="navbar__menu">
-                    <li class="navbar__item"><a href="#inicio" class="navbar__link active">Inicio</a></li>
+                    <li class="navbar__item"><a href="index.html" class="navbar__link active">Inicio</a></li>
                     
                     <li class="navbar__item has-dropdown">
-                        <a href="#nosotros" class="navbar__link">Institucional <i class="fa-solid fa-chevron-down"></i></a>
+                        <a href="nuestra-historia.html" class="navbar__link">Institucional <i class="fa-solid fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="nuestra-historia.html">Nuestra Historia</a></li>
                             <li><a href="mision-vision.html">Misión y Visión</a></li>
@@ -60,13 +60,15 @@
                         </ul>
                     </li>
                     
-                    <li class="navbar__item"><a href="index.html#academico" class="navbar__link">Académico</a></li>
-                    <li class="navbar__item"><a href="index.html#admisiones" class="navbar__link">Admisiones</a></li>
-                    <li class="navbar__item"><a href="index.html#noticias" class="navbar__link">Noticias</a></li>
+                    <li class="navbar__item"><a href="#academico" class="navbar__link">Académico</a></li>
+                    <li class="navbar__item"><a href="calendario.html" class="navbar__link">Calendario</a></li>
+                    <li class="navbar__item"><a href="noticias.html" class="navbar__link">Noticias</a></li>
+                    
                     <li class="navbar__item navbar__item--cta">
-                        <a href="/matriculas" class="btn btn--primary">Matricúlate 2024</a>
+                        <a href="admisiones.html" class="btn btn--primary">Matricúlate 2027</a>
                     </li>
                 </ul>
+                
             </div>
         </nav>
     </header>
@@ -207,5 +209,6 @@
     </footer>
 
     <script src="js/mision-vision.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

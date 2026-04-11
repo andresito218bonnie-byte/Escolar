@@ -238,7 +238,7 @@ ul {
     background: linear-gradient(135deg, var(--color-blue-dark) 0%, var(--color-blue) 100%);
     position: relative;
     overflow: hidden;
-    padding-top: 80px;
+    padding-top: 200px;
     text-align: center;
 }
 
@@ -281,6 +281,8 @@ ul {
     font-weight: 600;
     margin-bottom: 25px;
     border: 1px solid rgba(255, 209, 102, 0.4);
+    margin-top: 60px;
+    margin-bottom: 25px;
 }
 
 .hero__title {
@@ -545,6 +547,43 @@ ul {
     .features__grid, .academics__grid, .footer-grid { grid-template-columns: 1fr; }
     .hero__title { font-size: 2.8rem; }
     .features { margin-top: 40px; }
+}
+/* =========================================================
+   ARREGLO DE NOTICIAS Y EVENTOS PARA MÓVIL (< 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+    
+    /* 1. Obligamos al contenedor a apilar las columnas (Noticias arriba, Eventos abajo) */
+    .news-events__layout {
+        display: flex !important;
+        flex-direction: column !important; /* 🚨 La magia: vertical en vez de horizontal */
+        gap: 50px !important; /* Un buen espacio entre la última noticia y el título de eventos */
+    }
+
+    /* 2. Aseguramos que cada columna ocupe el 100% de la pantallita */
+    .news-column,
+    .events-column {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    /* 3. Centramos los títulos para que se vean más elegantes en celular */
+    .news-column .section-header,
+    .events-column .section-header {
+        text-align: center;
+    }
+
+    /* 4. Ajustamos las tarjetas de noticias para que no se apachurren */
+    .news-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .news-card {
+        width: 100%;
+        margin: 0;
+    }
 }
 /* =========================================================
    11. CORRECCIONES DE ESTRUCTURA Y ESPACIADO (LAYOUTS)
@@ -955,7 +994,7 @@ body::after {
     position: fixed;
     width: 150px;
     height: 150px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, transparent 50%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 50%);
     pointer-events: none;
     z-index: 9999;
     
@@ -1034,4 +1073,124 @@ section.visible {
 .hero, .site-header, .page-header {
     transform: none !important;
     opacity: 1 !important;
+}
+/* =========================================================
+   MENÚ HAMBURGUESA Y AJUSTES MÓVILES
+   ========================================================= */
+
+/* Por defecto (en PC), el botón de hamburguesa está oculto */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-blue-dark);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* =========================================================
+   MENÚ MÓVIL (100% CSS PURO - VERSIÓN COMPACTA)
+   ========================================================= */
+@media (max-width: 992px) {
+    
+    /* El botón base de la hamburguesa */
+    .menu-toggle {
+        display: block;
+        background: transparent;
+        border: none;
+        font-size: 2.2rem;
+        color: var(--color-blue-dark);
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    /* La cortina del menú (cerrada) */
+    .navbar__menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-white);
+        flex-direction: column;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        z-index: 9999;
+        display: flex;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    }
+
+    /* 🚨 La cortina abierta (Más apretadita para ahorrar espacio) */
+    .navbar__menu.active {
+        max-height: 800px;
+        padding: 10px 0; /* Reducimos el relleno superior/inferior */
+        opacity: 1;
+    }
+
+    /* Estilos de los enlaces (Más compactos) */
+    .navbar__menu li { 
+        width: 100%; 
+        text-align: center; 
+    }
+    
+    .navbar__menu .navbar__link { 
+        display: block; 
+        padding: 10px 15px; /* Menos espacio entre cada enlace */
+        font-size: 0.95rem; /* Letra un pelín más pequeña */
+        border-bottom: 1px solid #f1f5f9; 
+    }
+
+    /* Botón Matricúlate 2027 (Optimizado para que suba) */
+    .navbar__menu .btn--primary { 
+        display: block; 
+        width: 85%; 
+        margin: 10px auto; /* Menos margen */
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* --- Submenú Institucional (Cerrado por defecto) --- */
+    .navbar__item.has-dropdown .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: #f8fafc;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0;
+    }
+
+    /* Submenú abierto */
+    .navbar__item.has-dropdown.active .dropdown-menu {
+        max-height: 400px;
+    }
+    
+    /* Enlaces del submenú (Aún más compactos) */
+    .navbar__item.has-dropdown .dropdown-menu a {
+        padding: 8px 15px; 
+        font-size: 0.85rem;
+    }
+}
+/* --- AJUSTE DE BOTONES DEL HERO PARA MÓVIL --- */
+@media (max-width: 768px) {
+    /* Buscamos el contenedor de los dos botones */
+    .hero__actions { 
+        display: flex;
+        flex-direction: column; /* arriba del otro */
+        align-items: center;    /* Los centra horizontalmente */
+        gap: 15px;              /* Espacio entre el botón amarillo y el blanco */
+        width: 100%;
+        padding: 0 20px;        /* Un poco de aire a los lados */
+    }
+
+    /* Ajustamos los botones individualmente */
+    .hero__actions .btn {
+        width: 100%;            /* Que ocupen todo el ancho disponible */
+        max-width: 300px;       /* Pero que no se estiren al infinito en tablets */
+        margin: 0;              /* Quitamos márgenes viejos que estorben */
+        justify-content: center; /* Centra el texto y el icono adentro */
+    }
 }

@@ -3,7 +3,7 @@
    ========================================================= */
 
 .news-portal-page, .single-post-page {
-    padding-top: 100px; /* Compensa el menú fijo */
+    padding-top: 140px; /* Compensa el menú fijo */
 }
 
 /* --- Ticker de Noticias (Barra de última hora) --- */

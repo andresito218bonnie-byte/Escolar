@@ -7,15 +7,43 @@
     padding-bottom: 60px;
 }
 
-/* --- Banner de Título (Igual al de Historia para mantener consistencia) --- */
+/* --- Banner de Título --- */
 .page-header {
-    background-color: var(--color-white);
-    padding: 60px 0;
+    background: transparent; /* Quitamos el fondo blanco */
+    padding: 80px 0 50px; /* Ajustamos los espacios para que respire */
     text-align: center;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-soft);
-    margin-bottom: 60px;
-    border: 1px solid rgba(0,0,0,0.02);
+    box-shadow: none; /* Adiós sombra */
+    border: none; /* Adiós borde */
+    margin-bottom: 10px;
+}
+
+/* Le damos más fuerza al subtítulo (el que dice Programación Escolar) */
+.section-subtitle {
+    color: var(--color-yellow); 
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+/* Hacemos el título principal un poco más grande e imponente */
+.page-title {
+    font-size: 4rem; 
+    color: var(--color-blue-dark);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    letter-spacing: -1px; /* Junta un poquito las letras para un look más premium */
+}
+
+/* Oscurecemos un poquito la descripción para que se lea perfecto sin la caja blanca */
+.page-description {
+    font-size: 1.25rem;
+    color: #475569; /* Un gris un poco más oscuro y elegante */
+    max-width: 750px;
+    margin: 0 auto;
+    font-weight: 400;
 }
 
 .page-title {

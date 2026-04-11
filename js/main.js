@@ -96,3 +96,51 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejecutar cada vez que se hace scroll
     window.addEventListener('scroll', checkScroll);
 });
+// =========================================================
+// js/main.js - LÓGICA DEL MENÚ DE NAVEGACIÓN
+// =========================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Elementos principales del DOM
+    const btnHamburguesa = document.getElementById('btn-hamburguesa');
+    const menuPrincipal = document.querySelector('.navbar__menu');
+    
+    // 2. Lógica del botón Hamburguesa Principal
+    if (btnHamburguesa && menuPrincipal) {
+        const iconoHamburguesa = btnHamburguesa.querySelector('i');
+
+        btnHamburguesa.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Abre o cierra la cortina principal
+            menuPrincipal.classList.toggle('active');
+
+            // Cambia dinámicamente el icono (Barras <-> X)
+            if (menuPrincipal.classList.contains('active')) {
+                iconoHamburguesa.classList.remove('fa-bars');
+                iconoHamburguesa.classList.add('fa-xmark');
+            } else {
+                iconoHamburguesa.classList.remove('fa-xmark');
+                iconoHamburguesa.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // 3. Lógica para los submenús (Ej: "Institucional")
+    const botonesSubmenu = document.querySelectorAll('.has-dropdown > a');
+    
+    botonesSubmenu.forEach(boton => {
+        boton.addEventListener('click', function(e) {
+            // Solo activar la función de acordeón si estamos en versión móvil
+            if (window.innerWidth <= 992) {
+                e.preventDefault(); // Evita que la página salte
+                
+                // Le pone/quita la clase 'active' al contenedor (<li>)
+                const elementoPadre = this.parentElement;
+                elementoPadre.classList.toggle('active');
+            }
+        });
+    });
+
+});

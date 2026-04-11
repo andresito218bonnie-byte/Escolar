@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="assets/logo.png">
     
-    <link rel="stylesheet" href="css/noticias.css">
+    <link rel="stylesheet" href="css/admisiones.css">
     <link rel="stylesheet" href="css/style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -73,70 +73,44 @@
         </nav>
     </header>
 
-    <main class="single-post-page">
+    <main class="admission-page">
         
-<header class="article-header container">
-            <a href="noticias.html" class="back-to-news"><i class="fa-solid fa-arrow-left"></i> Volver a Noticias</a>
-            <div class="article-meta-top">
-                <span id="news-category" class="category-tag">Cargando...</span>
-            </div>
-            
-            <h1 id="news-title" class="article-title">Cargando noticia...</h1>
-            
-            <div class="article-author-bar">
-                <div class="author-info">
-                    <img src="https://ui-avatars.com/api/?name=I+E&background=0A58CA&color=fff" alt="Avatar" class="author-avatar">
-                    <div>
-                        <span id="news-author" class="author-name">Cargando...</span>
-                        <span id="news-date" class="post-date">...</span>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <div class="article-hero-image container">
-            <img id="news-image" src="" alt="Imagen de la noticia" style="display: none;">
-        </div>
-
-        <article id="news-content" class="article-body">
-            <div style="text-align: center; padding: 50px;">
-                <i class="fa-solid fa-circle-notch fa-spin fa-3x" style="color: var(--color-blue);"></i>
-            </div>
-        </article>
-
-        <section class="related-articles bg-light section-padding">
+        <section class="page-header">
             <div class="container">
-                <h2 class="text-center mb-4" style="text-align: center; color: var(--color-blue-dark); font-family: 'Nunito', sans-serif;">También te podría interesar</h2>
+                <span class="section-subtitle">Únete a nuestra familia</span>
+                <h1 class="page-title">Proceso de Admisión 2027</h1>
+                <p class="page-description">Diligencia el siguiente formulario para iniciar el proceso de inscripción. Nuestro equipo de admisiones se pondrá en contacto contigo a la mayor brevedad.</p>
+            </div>
+        </section>
+
+        <section class="form-section section-padding">
+            <div class="container">
                 
-                <div class="recent-news-grid" style="margin-top: 40px;">
-                    <a href="noticia-detalle.html" class="news-grid-item">
-                        <div class="news-grid-item__img">
-                            <span class="category-tag category-tag--science">Ciencia y Tecnología</span>
-                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
-                        </div>
-                        <div class="news-grid-item__content">
-                            <h3 class="news-grid-item__title">Inauguramos la nueva sala de sistemas iMac</h3>
-                            <ul class="post-meta"><li><i class="fa-regular fa-calendar"></i> 05 Sep, 2024</li></ul>
-                        </div>
-                    </a>
+                <div class="google-form-wrapper">
                     
-                    <a href="noticia-detalle.html" class="news-grid-item">
-                        <div class="news-grid-item__img">
-                            <span class="category-tag category-tag--academic">Académico</span>
-                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
-                        </div>
-                        <div class="news-grid-item__content">
-                            <h3 class="news-grid-item__title">Resultados de las Olimpiadas Regionales de Matemáticas</h3>
-                            <ul class="post-meta"><li><i class="fa-regular fa-calendar"></i> 12 Ago, 2024</li></ul>
-                        </div>
-                    </a>
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSeH1w_sf5rlU2LFz538Z5_Lo__ey0PWvKCal2VehwLyU-8fKw/viewform?usp=dialog" 
+                        width="100%" 
+                        height="2000" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0">
+                        Cargando formulario...
+                    </iframe>
+
+                </div>
+
+                <div class="text-center mt-5">
+                    <p style="color: var(--color-text-muted); font-size: 0.9rem;">
+                        <i class="fa-solid fa-lock"></i> Tus datos están protegidos según nuestra política de tratamiento de datos personales.
+                    </p>
                 </div>
             </div>
         </section>
 
     </main>
 
-        <footer class="site-footer">
+    <footer class="site-footer">
         <div class="footer-top">
             <div class="container footer-grid">
                 
@@ -203,9 +177,7 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/noticias-db.js"></script>
     <script>
-        // Actualizar el año del footer si no tienes un script global que ya lo haga
         document.addEventListener('DOMContentLoaded', function() {
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) yearSpan.textContent = new Date().getFullYear();
