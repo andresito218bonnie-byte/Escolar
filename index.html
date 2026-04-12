@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="assets/logo.png">
     
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/calendario.css">
     <link rel="stylesheet" href="css/style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -169,7 +169,7 @@
                         <div class="academic-card__content">
                             <h3>Preescolar</h3>
                             <p>Desarrollo de la motricidad, bases del lenguaje y socialización temprana en un entorno seguro y estimulante.</p>
-                            <a href="/preescolar" class="link-arrow">Ver plan de estudios <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="javascript:void(0);" onclick="abrirModal('plan-preescolar')">Ver plan de estudios</a>
                         </div>
                     </article>
 
@@ -181,7 +181,7 @@
                         <div class="academic-card__content">
                             <h3>Básica Primaria</h3>
                             <p>Consolidación de la lectura, escritura y pensamiento lógico-matemático a través de proyectos integradores.</p>
-                            <a href="/primaria" class="link-arrow">Ver plan de estudios <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="javascript:void(0);" onclick="abrirModal('plan-primaria')">Ver plan de estudios</a>
                         </div>
                     </article>
 
@@ -193,7 +193,7 @@
                         <div class="academic-card__content">
                             <h3>Básica y Media</h3>
                             <p>Profundización académica, orientación vocacional y preparación para la educación superior y la vida laboral.</p>
-                            <a href="/bachillerato" class="link-arrow">Ver plan de estudios <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="javascript:void(0);" onclick="abrirModal('plan-media')">Ver plan de estudios</a>
                         </div>
                     </article>
                 </div>
@@ -268,48 +268,16 @@
                     </div>
 
                     <div class="events-column">
-                        <div class="section-header">
-                            <h2 class="section-title">Próximos Eventos</h2>
-                        </div>
-                        <div class="events-list">
-                            <div class="event-item">
-                                <div class="event-item__date">
-                                    <span class="day">25</span>
-                                    <span class="month">OCT</span>
-                                </div>
-                                <div class="event-item__info">
-                                    <h4 class="event-item__title"><a href="#">Entrega de Boletines 3er Periodo</a></h4>
-                                    <span class="event-item__time"><i class="fa-regular fa-clock"></i> 07:00 AM - 12:00 PM</span>
-                                    <span class="event-item__location"><i class="fa-solid fa-location-dot"></i> Coliseo Principal</span>
-                                </div>
-                            </div>
-                            
-                            <div class="event-item">
-                                <div class="event-item__date">
-                                    <span class="day">31</span>
-                                    <span class="month">OCT</span>
-                                </div>
-                                <div class="event-item__info">
-                                    <h4 class="event-item__title"><a href="#">Celebración Día de la Familia</a></h4>
-                                    <span class="event-item__time"><i class="fa-regular fa-clock"></i> 08:00 AM - 02:00 PM</span>
-                                    <span class="event-item__location"><i class="fa-solid fa-location-dot"></i> Zonas Verdes</span>
-                                </div>
-                            </div>
-
-                            <div class="event-item">
-                                <div class="event-item__date">
-                                    <span class="day">15</span>
-                                    <span class="month">NOV</span>
-                                </div>
-                                <div class="event-item__info">
-                                    <h4 class="event-item__title"><a href="#">Ceremonia de Grados 2024</a></h4>
-                                    <span class="event-item__time"><i class="fa-regular fa-clock"></i> 04:00 PM</span>
-                                    <span class="event-item__location"><i class="fa-solid fa-location-dot"></i> Auditorio Central</span>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="calendario.html" class="btn btn--outline mt-4 w-100 text-center">Ver Calendario Completo</a>
+                    <div class="section-header">
+                        <h2 class="section-title">Próximos Eventos</h2>
                     </div>
+                    
+                    <div class="events-list" id="upcoming-events-list">
+                        <p style="padding: 20px; color: #666; font-style: italic;">Cargando eventos...</p>
+                    </div>
+
+                    <a href="calendario.html" class="btn btn--outline mt-4 w-100 text-center">Ver Calendario Completo</a>
+                </div>
 
                 </div>
             </div>
@@ -383,10 +351,66 @@
         </div>
     </footer>
 
+    <div id="modal-estudios" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="cerrarModal()">&times;</span>
+            
+            <div id="plan-preescolar" class="plan-info" style="display: none;">
+                <div class="modal-header header--preescolar">
+                    <i class="fa-solid fa-shapes"></i>
+                    <h2>Plan de Estudios: Preescolar</h2>
+                    <p>Exploración, Juego y Creatividad</p>
+                </div>
+                <div class="modal-body">
+                    <div class="grid-areas">
+                        <div class="area-item"><span>🖍️</span> Dimensión Cognitiva</div>
+                        <div class="area-item"><span>🏃</span> Motricidad Fina/Gruesa</div>
+                        <div class="area-item"><span>🎨</span> Expresión Artística</div>
+                        <div class="area-item"><span>❤️</span> Socioafectividad</div>
+                    </div>
+                    <p class="modal-footer-text">Basado en los lineamientos pedagógicos de educación inicial.</p>
+                </div>
+            </div>
+
+            <div id="plan-primaria" class="plan-info" style="display: none;">
+                <div class="modal-header header--primaria">
+                    <i class="fa-solid fa-book-open"></i>
+                    <h2>Básica Primaria</h2>
+                    <p>Fundamentación y Excelencia Académica</p>
+                </div>
+                <div class="modal-body">
+                    <div class="grid-areas">
+                        <div class="area-item"><span>📝</span> Lenguaje y Matemáticas</div>
+                        <div class="area-item"><span>🌍</span> Ciencias y Sociales</div>
+                        <div class="area-item"><span>🇬🇧</span> Inglés Progresivo</div>
+                        <div class="area-item"><span>💻</span> Informática Básica</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="plan-media" class="plan-info" style="display: none;">
+                <div class="modal-header header--media">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h2>Básica y Media</h2>
+                    <p>Preparación Profesional y Saber 11</p>
+                </div>
+                <div class="modal-body">
+                    <div class="grid-areas">
+                        <div class="area-item"><span>🧪</span> Ciencias Avanzadas</div>
+                        <div class="area-item"><span>📐</span> Matemáticas Superior</div>
+                        <div class="area-item"><span>🏛️</span> Filosofía y Política</div>
+                        <div class="area-item"><span>🚀</span> Orientación Vocacional</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Script simple para mantener el año del footer actualizado
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
     <script src="js/main.js"></script>
+    <script src="js/eventos.js"></script>
 </body>
 </html>

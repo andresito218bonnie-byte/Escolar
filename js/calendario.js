@@ -102,3 +102,104 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejecutar cada vez que se hace scroll
     window.addEventListener('scroll', checkScroll);
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('calendar-grid');
+    const monthText = document.getElementById('month-name');
+    const eventsContainer = document.getElementById('events-list-container');
+    const eventsTitle = document.getElementById('events-month-title');
+    
+    if (!grid || !monthText || !eventsContainer) return; 
+    
+    let date = new Date();
+    let currentMonth = date.getMonth(); 
+    let currentYear = date.getFullYear();
+    const nombresMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+    function renderCalendar() {
+        grid.innerHTML = ""; 
+        eventsContainer.innerHTML = ""; 
+
+        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const today = new Date(); 
+
+        const nombreMesActual = nombresMeses[currentMonth];
+        monthText.innerText = `${nombreMesActual} ${currentYear}`;
+        if (eventsTitle) eventsTitle.innerText = `Eventos de ${nombreMesActual}`;
+
+        let espaciosVacios = firstDay === 0 ? 6 : firstDay - 1;
+        for (let i = 0; i < espaciosVacios; i++) grid.innerHTML += `<div></div>`;
+
+        for (let i = 1; i <= lastDate; i++) {
+            let daySquare = document.createElement('div');
+            daySquare.classList.add('day');
+            if (i === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
+                daySquare.classList.add('today');
+            }
+            daySquare.innerHTML = `<span>${i}</span>`;
+
+            const eventosDelDia = eventosReales.filter(evt => 
+                evt.dia === i && evt.mes === currentMonth && evt.anio === currentYear
+            );
+
+            if (eventosDelDia.length > 0) {
+                // Creamos contenedor de puntos
+                const dotsContainer = document.createElement('div');
+                dotsContainer.classList.add('dots-container');
+
+                // Sacamos tipos únicos (para no repetir puntos del mismo color)
+                const tiposUnicos = [...new Set(eventosDelDia.map(e => e.tipo))];
+                tiposUnicos.forEach(tipo => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot', tipo);
+                    dotsContainer.appendChild(dot);
+                });
+                daySquare.appendChild(dotsContainer);
+
+                // Tarjetas de la derecha
+                eventosDelDia.forEach(evento => {
+                    const mesAbreviado = nombreMesActual.substring(0, 3).toUpperCase();
+                    eventsContainer.innerHTML += `
+                        <div class="event-card">
+                            <div class="event-card__date ${evento.tipo}">
+                                <span class="num-dia">${i}</span>
+                                <span class="month">${mesAbreviado}</span>
+                            </div>
+                            <div class="event-card__info">
+                                <h4>${evento.titulo}</h4>
+                                <p><i class="fa-regular fa-clock"></i> ${evento.hora} - ${evento.lugar}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            grid.appendChild(daySquare);
+        }
+
+        // Lógica final del botón (Limpiando duplicados)
+        if (eventsContainer.innerHTML === "") {
+            eventsContainer.innerHTML = `<p style="padding: 20px; color: #666; font-style: italic;">No hay eventos programados para este mes.</p>`;
+        } else {
+            // Solo lo agregamos si NO existe ya en el DOM para evitar duplicados
+            eventsContainer.innerHTML += `
+                <div class="download-container" style="margin-top: 40px; text-align: center; width: 100%; grid-column: 1 / -1;">
+                    <a href="#" class="btn btn--primary" style="display: inline-block;">Descargar Cronograma PDF</a>
+                </div>
+            `;
+        }
+    }
+
+    renderCalendar(); 
+    
+    document.getElementById('prevMonth').addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+        renderCalendar();
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+        renderCalendar();
+    });
+});

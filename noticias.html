@@ -48,7 +48,7 @@
                 </button>
 
                 <ul class="navbar__menu">
-                    <li class="navbar__item"><a href="index.html" class="navbar__link active">Inicio</a></li>
+                    <li class="navbar__item"><a href="index.html" class="navbar__link">Inicio</a></li>
                     
                     <li class="navbar__item has-dropdown">
                         <a href="nuestra-historia.html" class="navbar__link">Institucional <i class="fa-solid fa-chevron-down"></i></a>
@@ -60,9 +60,9 @@
                         </ul>
                     </li>
                     
-                    <li class="navbar__item"><a href="#academico" class="navbar__link">Académico</a></li>
+                    <li class="navbar__item"><a href="index.html#academico" class="navbar__link">Académico</a></li>
                     <li class="navbar__item"><a href="calendario.html" class="navbar__link">Calendario</a></li>
-                    <li class="navbar__item"><a href="noticias.html" class="navbar__link">Noticias</a></li>
+                    <li class="navbar__item"><a href="noticias.html" class="navbar__link active">Noticias</a></li>
                     
                     <li class="navbar__item navbar__item--cta">
                         <a href="admisiones.html" class="btn btn--primary">Matricúlate 2027</a>
@@ -71,101 +71,32 @@
                 
             </div>
         </nav>
-    </header>
-
-    <main class="news-portal-page">
-        
-        <div class="news-ticker-bar">
+            </header> <div class="news-ticker-bar">
             <div class="container ticker-container">
                 <span class="ticker-label"><i class="fa-solid fa-bolt"></i> Última hora:</span>
-                <marquee class="ticker-text" behavior="scroll" direction="left" scrollamount="5">
-                    Abiertas las inscripciones para las Olimpiadas Matemáticas 2024. | El equipo de baloncesto clasifica a la final departamental. | Próxima semana: Entrega de boletines.
-                </marquee>
+                <div class="ticker-content"> 
+                    <marquee class="ticker-text" behavior="scroll" direction="left" scrollamount="5">
+                        Abiertas las inscripciones para las Olimpiadas Matemáticas 2024. | El equipo de baloncesto clasifica a la final departamental. | Próxima semana: Entrega de boletines.
+                    </marquee>
+                </div>
             </div>
         </div>
 
+<main class="news-portal-page">
         <div class="container news-magazine-layout">
             
             <div class="main-news-column">
                 
-                <a href="noticia-detalle.html?id=feria-ciencias" class="hero-post">
-                    <div class="hero-post__image">
-                        <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 3rem;"></i></div>
-                        <div class="hero-post__overlay"></div>
+                <div id="contenedor-hero">
                     </div>
-                    <div class="hero-post__content">
-                        <span class="category-tag category-tag--science">Ciencia y Tecnología</span>
-                        <h1 class="hero-post__title">Gran éxito en la Feria de Innovación y Robótica 2024</h1>
-                        <ul class="post-meta">
-                            <li><i class="fa-regular fa-calendar"></i> 24 Oct, 2024</li>
-                            <li><i class="fa-regular fa-user"></i> Por: Coordinación Académica</li>
-                        </ul>
-                        <p class="hero-post__excerpt">Nuestros estudiantes de grado 11º sorprendieron al jurado con proyectos enfocados en energías renovables y domótica para el hogar.</p>
-                    </div>
-                </a>
 
                 <div class="section-header-small">
                     <h2>Noticias Recientes</h2>
                     <div class="header-line"></div>
                 </div>
 
-                <div class="recent-news-grid">
-                    <a href="noticia-detalle.html?id=campeones-baloncesto" class="news-grid-item">
-                        <div class="news-grid-item__img">
-                            <span class="category-tag category-tag--sports">Deportes</span>
-                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
-                        </div>
-                        <div class="news-grid-item__content">
-                            <h3 class="news-grid-item__title">Campeones en el torneo intercolegiado de baloncesto</h3>
-                            <ul class="post-meta">
-                                <li><i class="fa-regular fa-calendar"></i> 20 Oct, 2024</li>
-                            </ul>
-                            <p>Una final de infarto que nos coronó como los mejores de la región.</p>
-                        </div>
-                    </a>
-
-                    <a href="noticia-detalle.html?id=grupo-teatro" class="news-grid-item">
-                        <div class="news-grid-item__img">
-                            <span class="category-tag category-tag--culture">Cultura</span>
-                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
-                        </div>
-                        <div class="news-grid-item__content">
-                            <h3 class="news-grid-item__title">El grupo de teatro se prepara para su gran obra de fin de año</h3>
-                            <ul class="post-meta">
-                                <li><i class="fa-regular fa-calendar"></i> 18 Oct, 2024</li>
-                            </ul>
-                            <p>Los ensayos de 'Romeo y Julieta' prometen una noche inolvidable.</p>
-                        </div>
-                    </a>
-
-                    <a href="noticia-detalle.html?id=resultados-saber11" class="news-grid-item">
-                        <div class="news-grid-item__img">
-                            <span class="category-tag category-tag--academic">Académico</span>
-                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
-                        </div>
-                        <div class="news-grid-item__content">
-                            <h3 class="news-grid-item__title">Excelentes resultados en las pruebas de Estado Saber 11</h3>
-                            <ul class="post-meta">
-                                <li><i class="fa-regular fa-calendar"></i> 15 Oct, 2024</li>
-                            </ul>
-                            <p>Mantenemos nuestro nivel A+ gracias al esfuerzo de nuestros seniors.</p>
-                        </div>
-                    </a>
-                    
-                    <a href="noticia-detalle.html?id=asamblea-padres" class="news-grid-item">
-                        <div class="news-grid-item__img">
-                            <span class="category-tag category-tag--community">Comunidad</span>
-                            <div style="background-color: #E2E8F0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94A3B8;"><i class="fa-solid fa-image" style="font-size: 2rem;"></i></div>
-                        </div>
-                        <div class="news-grid-item__content">
-                            <h3 class="news-grid-item__title">Primera asamblea de padres: Uniendo lazos por la educación</h3>
-                            <ul class="post-meta">
-                                <li><i class="fa-regular fa-calendar"></i> 10 Oct, 2024</li>
-                            </ul>
-                            <p>Agradecemos la asistencia masiva para definir las metas de este año.</p>
-                        </div>
-                    </a>
-                </div>
+                <div class="recent-news-grid" id="contenedor-grid">
+                    </div>
 
                 <div class="pagination">
                     <a href="#" class="page-link active">1</a>
@@ -174,33 +105,24 @@
                     <span class="page-dots">...</span>
                     <a href="#" class="page-link">Siguiente <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-
             </div>
 
             <aside class="sidebar">
-                
                 <div class="widget">
                     <h3 class="widget-title">Lo más leído</h3>
                     <div class="trending-list">
-                        <a href="noticia-detalle.html?id=cronograma-matriculas" class="trending-item">
+                        <a href="#" class="trending-item">
                             <span class="trending-number">1</span>
                             <div class="trending-info">
-                                <h4>Cronograma oficial para el proceso de matrículas 2025</h4>
+                                <h4>Cronograma Matrículas 2025</h4>
                                 <span class="post-meta">Hace 2 días</span>
                             </div>
                         </a>
-                        <a href="noticia-detalle.html?id=menu-cafeteria" class="trending-item">
+                        <a href="#" class="trending-item">
                             <span class="trending-number">2</span>
                             <div class="trending-info">
-                                <h4>Menú de la cafetería escolar: Cambios saludables</h4>
+                                <h4>Menú de la cafetería escolar</h4>
                                 <span class="post-meta">Hace 5 días</span>
-                            </div>
-                        </a>
-                        <a href="noticia-detalle.html?id=lista-utiles" class="trending-item">
-                            <span class="trending-number">3</span>
-                            <div class="trending-info">
-                                <h4>Lista de útiles escolares por grado</h4>
-                                <span class="post-meta">Hace 1 semana</span>
                             </div>
                         </a>
                     </div>
@@ -213,20 +135,18 @@
                         <li><a href="#">Deportes <span>(15)</span></a></li>
                         <li><a href="#">Cultura y Arte <span>(9)</span></a></li>
                         <li><a href="#">Ciencia y Tecnología <span>(12)</span></a></li>
-                        <li><a href="#">Comunidad <span>(30)</span></a></li>
                     </ul>
                 </div>
 
                 <div class="widget newsletter-widget">
                     <i class="fa-regular fa-envelope-open"></i>
-                    <h3>Suscríbete al Boletín</h3>
-                    <p>Recibe las noticias más importantes del colegio directo en tu correo.</p>
+                    <h3>Suscríbete</h3>
+                    <p>Recibe las noticias en tu correo.</p>
                     <form action="#" class="newsletter-form">
-                        <input type="email" placeholder="Tu correo electrónico" required>
-                        <button type="submit" class="btn btn--primary">Suscribirme</button>
+                        <input type="email" placeholder="Tu correo" required>
+                        <button type="submit" class="btn btn--primary">Unirme</button>
                     </form>
                 </div>
-
             </aside>
         </div>
     </main>
@@ -297,7 +217,8 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="noticias-db.js" defer></script>
+    <script src="main.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const yearSpan = document.getElementById('current-year');

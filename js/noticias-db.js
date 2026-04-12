@@ -9,7 +9,7 @@ const baseDatosNoticias = {
         colorCategoria: "category-tag--science",
         fecha: "24 de Octubre, 2024",
         autor: "Coordinación Académica",
-        imagen: "assets/img/colegio1.jpg", // Pon la ruta real de tu foto
+        imagen: "assets/img/news-1.jpg", // la ruta real de la foto
         contenido: `
             <p class="lead-paragraph">El pasado viernes, las instalaciones de nuestro coliseo principal se transformaron en un verdadero epicentro de tecnología y creatividad.</p>
             <p>Con la participación de más de 150 estudiantes, el evento demostró que el talento y la pasión por las ciencias exactas están más vivos que nunca.</p>
@@ -24,7 +24,7 @@ const baseDatosNoticias = {
         colorCategoria: "category-tag--sports",
         fecha: "20 de Octubre, 2024",
         autor: "Departamento de Educación Física",
-        imagen: "assets/img/noticia-deportes.jpg",
+        imagen: "assets/img/primaria.jpg",
         contenido: `
             <p class="lead-paragraph">En una final de infarto que se decidió en los últimos segundos, nuestro equipo representativo se coronó campeón regional.</p>
             <p>El marcador final de 54-52 refleja lo reñido que estuvo el encuentro contra el Instituto Técnico. Felicitamos a nuestros atletas por dejar en alto el nombre de nuestra institución.</p>
@@ -85,4 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('news-category').style.display = 'none';
         }
     }
+});
+// Al final de tu archivo noticias-db.js
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Buscamos si existe el título de la noticia detallada
+    const tituloElemento = document.getElementById('news-title');
+    
+    // 🚨 EL ESCUDO: Si no estamos en la página de detalle, detenemos este código para que no saque error
+    if (!tituloElemento) return; 
+
+    // De aquí para abajo sigue todo tu código normal...
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    // ...
 });

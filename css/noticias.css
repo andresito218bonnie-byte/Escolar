@@ -7,30 +7,57 @@
 }
 
 /* --- Ticker de Noticias (Barra de última hora) --- */
+/* REAPARICIÓN DE ÚLTIMA HORA */
+/* EL ANCLA DE ÚLTIMA HORA */
 .news-ticker-bar {
-    background-color: var(--color-blue-dark);
-    color: var(--color-white);
-    padding: 8px 0;
-    font-size: 0.9rem;
+    display: flex !important;
+    align-items: center !important;
+    background-color: #063A86 !important;
+    color: #ffffff !important;
+    width: 100% !important;
+    height: 35px !important; /* Delgadita como te gusta */
+    position: absolute !important; /* 🚨 CAMBIO CLAVE: Se posiciona respecto al header */
+    left: 0 !important;
+    z-index: 999 !important;
+    border-bottom: 2px solid #FFD269 !important;
+    overflow: hidden !important;
+}
+
+/* ESTO ES LO QUE EVITA QUE SE PIERDA */
+header {
+    position: relative !important;
+    padding-bottom: 0px !important; /* 🚨 Crea el hueco exacto para que la barra quepa */
 }
 
 .ticker-container {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    width: 100% !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px !important;
 }
 
 .ticker-label {
-    font-weight: 700;
-    color: var(--color-yellow);
-    white-space: nowrap;
-    margin-right: 15px;
-    background: var(--color-blue-dark);
-    z-index: 2;
+    font-weight: 800 !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+    margin-right: 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #FFD269 !important;
+}
+
+.ticker-content {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 .ticker-text {
-    flex-grow: 1;
-    font-weight: 300;
+    font-size: 0.9rem !important;
+    margin: 0 !important;
 }
 
 /* =====================================
@@ -42,7 +69,23 @@
     gap: 50px;
     padding: 40px 0 80px;
 }
+/* --- ESTO ES PARA PEGAR LA BARRA AL CONTENIDO --- */
 
+.news-ticker-bar {
+    position: relative !important;
+    z-index: 100 !important;
+    margin-bottom: 0 !important; /* Asegura que no deje espacio abajo */
+}
+
+/* El símbolo '+' significa: "El elemento que sigue justo después de la barra" */
+.news-ticker-bar + * {
+    margin-top: -20px !important; /* 👈 ESTE NÚMERO es el que quita el hueco blanco */
+}
+
+/* Si tu contenedor principal es un <main>, esto lo refuerza */
+main {
+    padding-top: 0 !important;
+}
 /* --- Noticia Destacada (Hero Post) --- */
 .hero-post {
     display: block;
@@ -116,7 +159,73 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+/* =========================================================
+   ESTILOS DE LA NOTICIA PRINCIPAL (HERO)
+   ========================================================= */
 
+#hero-dinamico {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important; /* Manda el texto para abajo */
+    position: relative !important;
+    min-height: 450px !important; /* La altura de tu cuadro de noticia */
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    text-decoration: none !important;
+    padding: 40px !important; /* Espacio para que el texto respire */
+    margin-bottom: 30px !important;
+}
+
+/* La caja que contiene la foto */
+.hero-post__image {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+}
+
+/* El degradado oscuro para que las letras blancas se lean perfecto */
+.hero-post__overlay {
+    position: absolute !important;
+    top: 0 !important; 
+    left: 0 !important; 
+    width: 100% !important; 
+    height: 100% !important;
+    background: linear-gradient(to top, rgba(0,34,77,0.95) 0%, rgba(0,0,0,0.1) 100%) !important;
+    z-index: 2 !important;
+}
+
+/* El texto de la noticia flotando encima de la foto */
+.hero-post__content {
+    position: relative !important;
+    z-index: 3 !important; /* 🚨 Esto lo pone por encima de todo */
+    color: #ffffff !important;
+    max-width: 800px !important;
+}
+
+/* Ajustes para el texto interno */
+.hero-post__title {
+    color: #ffffff !important;
+    font-size: 2.2rem !important;
+    margin: 10px 0 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.post-meta {
+    display: flex !important;
+    gap: 15px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    color: #ffcc00 !important; /* Amarillo institucional */
+    margin-bottom: 15px !important;
+}
+
+.hero-post__excerpt {
+    color: #e2e8f0 !important;
+    font-size: 1.1rem !important;
+}
 /* --- Etiquetas de Categoría (Colores) --- */
 .category-tag {
     display: inline-block;
@@ -626,4 +735,33 @@
     .article-hero-image img {
         height: 300px;
     }
+}
+/* =========================================================
+   AJUSTES PARA IMÁGENES DE NOTICIAS
+   ========================================================= */
+.img-hero-fit {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.news-grid-item__img {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.img-grid-fit {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.label-flotante {
+    position: absolute !important; 
+    top: 10px !important; 
+    left: 10px !important; 
+    z-index: 2 !important;
 }

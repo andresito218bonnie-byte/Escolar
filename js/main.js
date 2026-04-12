@@ -144,3 +144,196 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+// --- EFECTO SCROLL SPY CORREGIDO (Solo un activo a la vez) ---
+window.addEventListener('scroll', () => {
+    const seccionAcademico = document.getElementById('academico');
+    const linkAcademico = document.querySelector('a[href="#academico"]');
+    const linkInicio = document.querySelector('a[href="index.html"]');
+    
+    // Todos los enlaces del menú para poder limpiarlos
+    const todosLosLinks = document.querySelectorAll('.navbar__link');
+
+    if (seccionAcademico && linkAcademico) {
+        const topSeccion = seccionAcademico.offsetTop - 200; // Ajuste de detección
+        const scrollActual = window.scrollY;
+
+        if (scrollActual >= topSeccion) {
+            // 1. Limpiamos TODOS primero
+            todosLosLinks.forEach(link => link.classList.remove('active'));
+            
+            // 2. Activamos solo Académico
+            linkAcademico.classList.add('active');
+        } else {
+            // 3. Si estamos arriba, limpiamos y solo activamos Inicio
+            todosLosLinks.forEach(link => link.classList.remove('active'));
+            if(linkInicio) linkInicio.classList.add('active');
+        }
+    }
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const upcomingContainer = document.getElementById('upcoming-events-list');
+    if (!upcomingContainer) return;
+
+    // 🚨 AQUÍ NO PONES "const eventosReales", el JS lo toma de eventos.js solo
+    
+    const hoy = new Date();
+    const nombresMeses = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+
+    // 1. Filtrar eventos futuros
+    const futuros = eventosReales.filter(evt => {
+        const fechaEvento = new Date(evt.anio, evt.mes, evt.dia);
+        return fechaEvento >= hoy.setHours(0,0,0,0);
+    });
+
+    // 2. Ordenar por fecha (más cercano primero)
+    futuros.sort((a, b) => new Date(a.anio, a.mes, a.dia) - new Date(b.anio, b.mes, b.dia));
+
+    // 3. Mostrar solo los 3 más cercanos
+    const proximosTres = futuros.slice(0, 3);
+
+    // 4. Inyectar en el HTML
+    upcomingContainer.innerHTML = ""; 
+    proximosTres.forEach(evento => {
+        upcomingContainer.innerHTML += `
+            <div class="event-card">
+                <div class="event-card__date ${evento.tipo}">
+                    <span class="num-dia">${evento.dia}</span>
+                    <span class="month">${nombresMeses[evento.mes]}</span>
+                </div>
+                <div class="event-card__info">
+                    <h4>${evento.titulo}</h4>
+                    <p><i class="fa-regular fa-clock"></i> ${evento.hora} - ${evento.lugar}</p>
+                </div>
+            </div>
+        `;
+    });
+});
+// 4. Inyectar en el HTML
+    
+    // 🛡️ EL ESCUDO: Solo inyecta si el contenedor existe en esta página
+    if (upcomingContainer) {
+        upcomingContainer.innerHTML = ""; 
+        proximosTres.forEach(evento => {
+            upcomingContainer.innerHTML += `
+                <div class="event-card">
+                    <div class="event-card__date ${evento.tipo}">
+                        <span class="num-dia">${evento.dia}</span>
+                        <span class="month">${nombresMeses[evento.mes]}</span>
+                    </div>
+                    <div class="event-card__info">
+                        <h4>${evento.titulo}</h4>
+                        <p><i class="fa-regular fa-clock"></i> ${evento.hora} - ${evento.lugar}</p>
+                    </div>
+                </div>
+            `;
+        });
+    } // <--- Cierre del escudo
+
+    // =========================================================
+// LÓGICA DE LA VENTANA EMERGENTE (MODAL) BLINDADA
+// =========================================================
+
+function abrirModal(idPlan) {
+    const modal = document.getElementById('modal-estudios');
+    const content = modal.querySelector('.modal-content');
+
+    // 1. Limpiamos clases viejas y preparamos el contenido
+    content.classList.remove('cerrando');
+    modal.classList.remove('desvanecer');
+    
+    document.querySelectorAll('.plan-info').forEach(p => p.style.display = 'none');
+    document.getElementById(idPlan).style.display = 'block';
+
+    // 2. Mostramos y activamos animación de entrada
+    modal.style.display = 'flex';
+    content.classList.add('abriendo');
+}
+
+function cerrarModal() {
+    const modal = document.getElementById('modal-estudios');
+    const content = modal.querySelector('.modal-content');
+
+    // 1. Activamos las animaciones de salida
+    content.classList.remove('abriendo');
+    content.classList.add('cerrando');
+    modal.classList.add('desvanecer');
+
+    // 2. Esperamos a que termine la animación (400ms) antes de ocultar todo
+    setTimeout(() => {
+        modal.style.display = 'none';
+        content.classList.remove('cerrando');
+        modal.classList.remove('desvanecer');
+    }, 400); 
+}
+
+    // =========================================================
+// INYECTOR DE NOTICIAS AUTOMÁTICAS
+// =========================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const heroBox = document.getElementById('contenedor-hero');
+    const gridBox = document.getElementById('contenedor-grid');
+
+    // 🛡️ ESCUDO: Si no estamos en la página de noticias, no hace nada
+    if (!heroBox && !gridBox) return; 
+
+    // Verificamos que la base de datos ya haya cargado exitosamente
+    if (typeof baseDatosNoticias === 'undefined') {
+        console.error("❌ La base de datos no cargó. Revisa que noticias-db.js esté en tu HTML.");
+        return;
+    }
+
+    const idPrincipal = "feria-ciencias"; 
+    const principal = baseDatosNoticias[idPrincipal];
+    
+    // 1. PINTAR LA NOTICIA DESTACADA (HERO)
+    if (principal && heroBox) {
+        heroBox.innerHTML = `
+            <a href="noticia-detalle.html?id=${idPrincipal}" class="hero-post">
+                <div class="hero-post__image">
+                    <img src="${principal.imagen}" alt="${principal.titulo}" class="img-hero-fit">
+                    <div class="hero-post__overlay"></div>
+                </div>
+                <div class="hero-post__content">
+                    <span class="category-tag ${principal.colorCategoria}">${principal.categoria}</span>
+                    <h1 class="hero-post__title">${principal.titulo}</h1>
+                    <ul class="post-meta">
+                        <li><i class="fa-regular fa-calendar"></i> ${principal.fecha}</li>
+                        <li><i class="fa-regular fa-user"></i> Por: ${principal.autor}</li>
+                    </ul>
+                    <p class="hero-post__excerpt">Haz clic para leer todos los detalles de este evento.</p>
+                </div>
+            </a>
+        `;
+    }
+
+    // 2. PINTAR LAS DEMÁS NOTICIAS (GRID)
+    if (gridBox) {
+        let contenidoGrid = "";
+        for (let id in baseDatosNoticias) {
+            if (id === idPrincipal) continue; // Nos saltamos la de arriba
+            
+            const n = baseDatosNoticias[id];
+            
+            // Limpiamos etiquetas raras para sacar un extracto limpio
+            const textoLimpio = n.contenido.replace(/<[^>]*>?/gm, '');
+            const extractoCorto = textoLimpio.substring(0, 80) + "...";
+
+            contenidoGrid += `
+                <a href="noticia-detalle.html?id=${id}" class="news-grid-item">
+                    <div class="news-grid-item__img">
+                        <span class="category-tag ${n.colorCategoria} label-flotante">${n.categoria}</span>
+                        <img src="${n.imagen}" alt="${n.titulo}" class="img-grid-fit">
+                    </div>
+                    <div class="news-grid-item__content">
+                        <h3 class="news-grid-item__title">${n.titulo}</h3>
+                        <ul class="post-meta">
+                            <li><i class="fa-regular fa-calendar"></i> ${n.fecha}</li>
+                        </ul>
+                        <p>${extractoCorto}</p>
+                    </div>
+                </a>
+            `;
+        }
+        gridBox.innerHTML = contenidoGrid;
+    }
+});

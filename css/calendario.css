@@ -153,27 +153,64 @@
     color: #cbd5e1;
 }
 
-/* Día seleccionado o actual */
-.day.active {
-    background-color: var(--color-blue);
-    color: var(--color-white);
-    box-shadow: 0 4px 10px rgba(10, 88, 202, 0.3);
+/* --- ESTILOS DINÁMICOS DEL CALENDARIO (Día Hoy y Eventos) --- */
+
+/* --- RESET TOTAL PARA EL DÍA --- */
+#calendar-grid .day {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 48px !important;
+    width: 48px !important;
+    margin: 0 auto !important;
+    padding: 0 !important; /* Quitamos cualquier padding que empuje los puntos */
+    overflow: visible !important;
 }
 
-/* Indicadores de eventos (Puntitos debajo del número) */
-.day .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    margin-top: 4px;
-    display: block;
+/* --- FORZAR EL NÚMERO AL CENTRO --- */
+#calendar-grid .day span:not(.dot) {
+    display: block !important;
+    position: relative !important;
+    z-index: 5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    transform: translateY(-2px); /* Lo subimos un pelín manualmente */
 }
 
-.day.event-blue .dot { background-color: var(--color-blue); }
-.day.event-yellow .dot { background-color: var(--color-yellow); }
+/* --- FORZAR PUNTOS AL PISO (COORDENADAS ABSOLUTAS) --- */
+.dots-container {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 6px !important; /* 🚨 Esto los clava al piso sí o sí */
+    display: flex !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 10 !important;
+    pointer-events: none; /* Para que no estorben al hacer clic */
+}
 
-/* Si el día está activo (fondo azul), el puntito azul pasa a blanco para que se vea */
-.day.active.event-blue .dot { background-color: var(--color-white); }
+/* --- ESTILO DE LOS PUNTOS --- */
+.dot {
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+.dot.blue { background-color: var(--color-blue) !important; }
+.dot.yellow { background-color: var(--color-yellow) !important; }
+
+/* --- DÍA DE HOY (FIJO) --- */
+.day.today {
+    background-color: var(--color-blue) !important;
+    color: white !important;
+}
+.day.today .dot { background-color: white !important; }
 
 /* Leyenda inferior */
 .calendar-legend {
@@ -251,7 +288,7 @@
 .event-card__date.blue { background-color: var(--color-blue); }
 .event-card__date.yellow { background-color: var(--color-yellow); color: var(--color-blue-dark); }
 
-.event-card__date .day {
+.event-card__date .num-dia {
     font-family: 'Nunito', sans-serif;
     font-size: 1.4rem;
     font-weight: 900;
@@ -295,4 +332,54 @@
     .calendar-days .day {
         font-size: 0.9rem;
     }
+}
+/* --- ESTILOS DINÁMICOS DEL CALENDARIO --- */
+
+/* El día de HOY (Círculo azul) */
+.day.today {
+    background-color: var(--color-blue);
+    color: white !important;
+    border-radius: 50%;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 86, 210, 0.3); /* Un brillito elegante */
+}
+
+/* Día que tiene un evento (Punto amarillo abajo) */
+.day.has-event {
+    position: relative;
+    font-weight: 800;
+}
+
+.day.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-yellow);
+    border-radius: 50%;
+}
+/* =========================================================
+   ARREGLO DE LA CUADRÍCULA DEL CALENDARIO (GRID)
+   ========================================================= */
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 🚨 LA MAGIA: 7 columnas exactas */
+    gap: 10px; /* Espacio entre los números para que respiren */
+    padding: 10px 0;
+}
+
+/* Ajuste individual para cada celda de día */
+#calendar-grid div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px; /* Alto del número */
+    width: 45px; /* Ancho del número */
+    margin: 0 auto; /* Para que quede perfectamente centrado en su columna */
+    font-size: 1rem;
+    cursor: pointer;
 }

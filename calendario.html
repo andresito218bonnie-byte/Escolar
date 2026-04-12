@@ -48,7 +48,7 @@
                 </button>
 
                 <ul class="navbar__menu">
-                    <li class="navbar__item"><a href="index.html" class="navbar__link active">Inicio</a></li>
+                    <li class="navbar__item"><a href="index.html" class="navbar__link">Inicio</a></li>
                     
                     <li class="navbar__item has-dropdown">
                         <a href="nuestra-historia.html" class="navbar__link">Institucional <i class="fa-solid fa-chevron-down"></i></a>
@@ -60,8 +60,8 @@
                         </ul>
                     </li>
                     
-                    <li class="navbar__item"><a href="#academico" class="navbar__link">Académico</a></li>
-                    <li class="navbar__item"><a href="calendario.html" class="navbar__link">Calendario</a></li>
+                    <li class="navbar__item"><a href="index.html#academico" class="navbar__link">Académico</a></li>
+                    <li class="navbar__item"><a href="calendario.html" class="navbar__link active">Calendario</a></li>
                     <li class="navbar__item"><a href="noticias.html" class="navbar__link">Noticias</a></li>
                     
                     <li class="navbar__item navbar__item--cta">
@@ -86,60 +86,21 @@
             <div class="container">
                 <div class="calendar-wrapper">
                     
-                    <div class="calendar-grid-container">
+                                    <div class="calendar-grid-container">
                         <div class="calendar-header">
-                            <button class="calendar-btn" aria-label="Mes anterior"><i class="fa-solid fa-chevron-left"></i></button>
-                            <h2 class="calendar-month">Octubre 2024</h2>
-                            <button class="calendar-btn" aria-label="Mes siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                            <button id="prevMonth" class="calendar-btn" aria-label="Mes anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                            
+                            <h2 id="month-name" class="calendar-month">Cargando...</h2>
+                            
+                            <button id="nextMonth" class="calendar-btn" aria-label="Mes siguiente"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                         
                         <div class="calendar-weekdays">
                             <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
                         </div>
                         
-                        <div class="calendar-days">
-                            <div class="day prev-month">30</div>
-                            <div class="day prev-month">31</div>
-                            
-                            <div class="day">1</div>
-                            <div class="day">2</div>
-                            <div class="day">3</div>
-                            <div class="day">4</div>
-                            <div class="day">5</div>
-                            <div class="day">6</div>
-                            <div class="day">7</div>
-                            <div class="day">8</div>
-                            <div class="day">9</div>
-                            
-                            <div class="day has-event event-yellow">10<span class="dot"></span></div>
-                            
-                            <div class="day">11</div>
-                            <div class="day">12</div>
-                            <div class="day">13</div>
-                            <div class="day">14</div>
-                            
-                            <div class="day has-event event-blue active">15<span class="dot"></span></div>
-                            
-                            <div class="day">16</div>
-                            <div class="day">17</div>
-                            <div class="day">18</div>
-                            <div class="day">19</div>
-                            <div class="day">20</div>
-                            <div class="day">21</div>
-                            <div class="day">22</div>
-                            <div class="day">23</div>
-                            <div class="day">24</div>
-                            
-                            <div class="day has-event event-blue">25<span class="dot"></span></div>
-                            
-                            <div class="day">26</div>
-                            <div class="day">27</div>
-                            <div class="day">28</div>
-                            <div class="day">29</div>
-                            <div class="day">30</div>
-                            
-                            <div class="day has-event event-yellow">31<span class="dot"></span></div>
-                        </div>
+                        <div class="calendar-days" id="calendar-grid">
+                            </div>
                         
                         <div class="calendar-legend">
                             <span class="legend-item"><span class="dot dot--blue"></span> Académico</span>
@@ -148,56 +109,11 @@
                     </div>
 
                     <div class="calendar-events-list">
-                        <h3 class="events-list-title">Eventos de Octubre</h3>
-                        
-                        <div class="events-container">
-                            <div class="event-card">
-                                <div class="event-card__date yellow">
-                                    <span class="day">10</span>
-                                    <span class="month">OCT</span>
-                                </div>
-                                <div class="event-card__info">
-                                    <h4>Campeones Intercolegiados</h4>
-                                    <p><i class="fa-regular fa-clock"></i> 08:00 AM - Coliseo</p>
-                                </div>
-                            </div>
-
-                            <div class="event-card active-event">
-                                <div class="event-card__date blue">
-                                    <span class="day">15</span>
-                                    <span class="month">OCT</span>
-                                </div>
-                                <div class="event-card__info">
-                                    <h4>Feria de Ciencia y Tecnología</h4>
-                                    <p><i class="fa-regular fa-clock"></i> 07:00 AM - Aulas Múltiples</p>
-                                </div>
-                            </div>
-
-                            <div class="event-card">
-                                <div class="event-card__date blue">
-                                    <span class="day">25</span>
-                                    <span class="month">OCT</span>
-                                </div>
-                                <div class="event-card__info">
-                                    <h4>Entrega de Boletines 3er Periodo</h4>
-                                    <p><i class="fa-regular fa-clock"></i> 07:00 AM - Auditorio</p>
-                                </div>
-                            </div>
-
-                            <div class="event-card">
-                                <div class="event-card__date yellow">
-                                    <span class="day">31</span>
-                                    <span class="month">OCT</span>
-                                </div>
-                                <div class="event-card__info">
-                                    <h4>Celebración Día de los Niños</h4>
-                                    <p><i class="fa-regular fa-clock"></i> 10:00 AM - Zonas Verdes</p>
-                                </div>
-                            </div>
+                    <h3 class="events-list-title" id="events-month-title">Eventos del mes</h3>
+                    
+                    <div class="events-container" id="events-list-container">
                         </div>
-                        
-                        <a href="#" class="btn btn--outline mt-4 w-100 text-center" style="color: var(--color-blue); border-color: var(--color-blue);">Descargar Cronograma PDF</a>
-                    </div>
+                </div>
 
                 </div>
             </div>
@@ -256,6 +172,7 @@
     </footer>
 
     <script src="js/calendario.js"></script>
+    <script src="js/eventos.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
